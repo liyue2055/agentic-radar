@@ -42,3 +42,7 @@ python3 radar/digest.py 2026-10-05
 python3 radar/site.py
 python3 radar/reflect.py 2026-10-05
 ```
+
+## Live
+
+https://agentic-radar-self-59d1.vercel.app
