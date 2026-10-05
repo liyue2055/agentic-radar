@@ -19,6 +19,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
 
 PARENT = os.environ.get("RADAR_NOTION_PARENT", "")
+SITE_URL = os.environ.get("RADAR_SITE_URL",
+                          "https://agentic-radar-self-59d1.vercel.app")
 
 
 def create_page(title: str, markdown: str) -> str:
@@ -49,7 +51,8 @@ def main() -> None:
         if not md:
             raise SystemExit(f"no digest for {day}")
         title = f"Agentic Radar — {day}"
-        body = f"# {title}\n\n{md}"
+        img = f"{SITE_URL}/{day}-poster.png"
+        body = f"# {title}\n\n![Day poster]({img})\n\n{md}"
     else:
         conn = db.connect()
         row = conn.execute(
@@ -59,7 +62,8 @@ def main() -> None:
         if not row:
             raise SystemExit(f"no reflection for {day}")
         title = f"Agentic Radar reflection — {day}"
-        body = f"# {title}\n\n{row[0]}"
+        img = f"{SITE_URL}/{day}-reflect.png"
+        body = f"# {title}\n\n![Reflection visual]({img})\n\n{row[0]}"
     out = create_page(title, body)
     print(out[:500])
 

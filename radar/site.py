@@ -52,9 +52,34 @@ def main() -> None:
                   reverse=True)
     for day in days:
         md = open(os.path.join(DIGESTS, f"{day}.md")).read()
-        body = md_to_html(md) + '<p><a href="index.html">← all days</a></p>'
+        poster = f"{day}-poster.png"
+        img = (f'<img src="{poster}" alt="poster for {day}" '
+               f'style="max-width:100%;border-radius:8px">\n'
+               if os.path.exists(os.path.join(SITE, poster)) else "")
+        rlink = (f'<p><a href="{day}-reflection.html">'
+                 f"Editor's reflection →</a></p>"
+                 if os.path.exists(os.path.join(ROOT, "reflections",
+                                                f"{day}.md")) else "")
+        body = img + md_to_html(md) + rlink + '<p><a href="index.html">← all days</a></p>'
         open(os.path.join(SITE, f"{day}.html"), "w").write(
             PAGE.format(title=day, body=body))
+    # reflection pages
+    rdir = os.path.join(ROOT, "reflections")
+    if os.path.isdir(rdir):
+        for f in os.listdir(rdir):
+            if not f.endswith(".md"):
+                continue
+            day = f[:-3]
+            md = open(os.path.join(rdir, f)).read()
+            rimg = f"{day}-reflect.png"
+            img = (f'<img src="{rimg}" alt="reflection visual for {day}" '
+                   f'style="max-width:100%;border-radius:8px">\n'
+                   if os.path.exists(os.path.join(SITE, rimg)) else "")
+            body = (img + md_to_html(md) +
+                    f'<p><a href="{day}.html">← digest</a> · '
+                    f'<a href="index.html">all days</a></p>')
+            open(os.path.join(SITE, f"{day}-reflection.html"), "w").write(
+                PAGE.format(title=f"Reflection {day}", body=body))
     lis = "".join(f'<li><a href="{d}.html">{d}</a></li>' for d in days) or \
         "<li>No digests yet.</li>"
     index = (f"<h1>Agentic Radar</h1>"

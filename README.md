@@ -12,11 +12,15 @@ what it connects to, and where the trend points.
    from the DB, then writes `digests/YYYY-MM-DD.md` with four sections:
    what happened, why it matters, connections across time (`[id] <-> [id]`),
    and where it points ([bullish]/[bearish] predictions).
-3. **Publish**: `radar/site.py` regenerates the static `site/`; push to GitHub
+3. **Poster** (`radar/poster.py`): generates a poster-style image of the day's
+   main story (~$0.01) into `site/<day>-poster.png`; the reflection job gets
+   its own visual (`site/<day>-reflect.png`). Both appear on the site and in
+   the Notion posts.
+4. **Publish**: `radar/site.py` regenerates the static `site/`; push to GitHub
    → Vercel auto-deploys. The digest also posts to Notion.
-4. **Reflect** (cron, ~9am ET): the editor prompt critiques the digest —
+5. **Reflect** (cron, ~9am ET): the editor prompt critiques the digest —
    hits, misses, coverage gaps, one change for tomorrow. Saved to
-   `reflections/` and posted to Notion as the learning log.
+   `reflections/` (with its own visual) and posted to Notion as the learning log.
 
 ## The point
 
