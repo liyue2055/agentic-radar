@@ -24,7 +24,7 @@ SITE_URL = os.environ.get("RADAR_SITE_URL",
 
 
 def create_page(title: str, markdown: str) -> str:
-    page: dict = {"title": title, "content": markdown}
+    page: dict = {"properties": {"title": title}, "content": markdown}
     if PARENT:
         page["parent"] = {"page_id": PARENT}
         body = {"pages": [page]}
