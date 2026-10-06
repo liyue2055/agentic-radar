@@ -21,6 +21,7 @@ import os
 import re
 import subprocess
 import sys
+from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BIN = os.path.expanduser("~/workspace/skills/meta-model-api/bin")
@@ -73,6 +74,12 @@ Rules:
 - themes: 3 buckets grouping the 6 stories (title + the org/product keywords inside).
 - constraints: 3 tension words/phrases from the bearish points and risks.
 - Proofread every string for typos. Keep every string within its char limit. Plain text only, no markdown."""
+
+
+def fmt_day(day: str) -> str:
+    """2026-10-05 -> '5 OCTOBER 2026' (deterministic header date)."""
+    d = datetime.strptime(day, "%Y-%m-%d")
+    return f"{d.day} {d.strftime('%B').upper()} {d.year}"
 
 
 def extract_poster_data(markdown: str) -> dict:
@@ -235,6 +242,7 @@ def make_digest_poster(day: str) -> str:
     try:
         print("extracting poster data...")
         pdata = extract_poster_data(markdown)
+        pdata["date"] = fmt_day(day)  # pin date to the digest day, not the LLM's guess
         html_path = f"/tmp/radar_poster_{day}.html"
         with open(html_path, "w") as fh:
             fh.write(render_html(pdata, day))
