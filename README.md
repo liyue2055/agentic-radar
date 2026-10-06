@@ -12,9 +12,11 @@ what it connects to, and where the trend points.
    from the DB, then writes `digests/YYYY-MM-DD.md` with four sections:
    what happened, why it matters, connections across time (`[id] <-> [id]`),
    and where it points ([bullish]/[bearish] predictions).
-3. **Poster** (`radar/poster.py`): generates a poster-style image of the day's
-   main story (~$0.01) into `site/<day>-poster.png`; the reflection job gets
-   its own visual (`site/<day>-reflect.png`). Both appear on the site and in
+3. **Poster** (`radar/poster.py`): renders a deterministic editorial infographic
+   from the digest (text model extracts story data, HTML template + headless
+   Chromium screenshot) into `site/<day>-poster.png` — no image model, so all
+   text renders perfectly; the reflection job gets its own visual
+   (`site/<day>-reflect.png`, image model ~$0.01). Both appear on the site and in
    the Notion posts.
 4. **Publish**: `radar/site.py` regenerates the static `site/`; push to GitHub
    → Vercel auto-deploys. The digest also posts to Notion.
@@ -39,6 +41,7 @@ gets smarter.
 ```bash
 python3 radar/db.py            # (import-only; schema auto-creates)
 python3 radar/digest.py 2026-10-05
+python3 radar/poster.py digest 2026-10-05   # needs: cd radar/shot && npm install
 python3 radar/site.py
 python3 radar/reflect.py 2026-10-05
 ```
