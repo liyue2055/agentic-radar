@@ -20,7 +20,7 @@ import db
 
 PARENT = os.environ.get("RADAR_NOTION_PARENT", "")
 SITE_URL = os.environ.get("RADAR_SITE_URL",
-                          "https://agentic-radar-self-59d1.vercel.app")
+                          "https://feedos.si")
 
 
 def create_page(title: str, markdown: str) -> str:
