@@ -50,4 +50,5 @@ python3 radar/reflect.py 2026-10-05
 
 ## Live
 
-https://feedos.si
+- https://agentic-radar.vercel.app/ (live now)
+- https://feedos.si (custom domain, nameservers updated — propagating)
