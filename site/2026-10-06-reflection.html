@@ -2,31 +2,96 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reflection 2026-10-06 — Agentic Radar</title>
+<meta name="description" content="A daily digest of agentic AI — what happened, why, and where it points.">
 <style>
-body{font-family:system-ui,-apple-system,sans-serif;max-width:760px;margin:0 auto;padding:24px;line-height:1.6}
-h1{font-size:1.5rem} .day{color:#888} a{color:#0a66c2}
-ul.days{list-style:none;padding:0} ul.days li{margin:8px 0}
-pre{white-space:pre-wrap}
-</style></head><body><img src="2026-10-06-reflect.png" alt="reflection visual for 2026-10-06" style="max-width:100%;border-radius:8px">
-<h1>Reflection — 2026-10-06</h1>
+:root{
+  --paper:#f8f5ee; --ink:#1b1e26; --muted:#6f7280; --line:#e5e0d3;
+  --card:#ffffff; --navy:#10243e; --blue:#1c5fd6; --teal:#0e7d7b;
+  --orange:#c96a12; --green:#1e7f43; --red:#b3352b;
+}
+*{box-sizing:border-box}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--paper);color:var(--ink);margin:0;line-height:1.65;font-size:16.5px}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.site-header{background:var(--navy);color:#fff;padding:18px 0;margin-bottom:34px}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:2.5px;font-size:15px}
+.brand small{color:#8fb4ff;letter-spacing:1px;font-weight:600;margin-left:10px}
+.site-header nav a{color:#cdd9f5;margin-left:18px;font-size:14px}
+.date-line{color:var(--muted);font-size:14.5px;margin:-4px 0 26px}
+.poster{border-radius:14px;box-shadow:0 18px 50px rgba(16,36,62,.16);
+  margin:0 0 34px;overflow:hidden}
+.poster img{display:block;width:100%;height:auto}
+.section{margin:0 0 34px}
+.section>h2{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--muted);margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.story{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px;display:flex;gap:12px;align-items:flex-start}
+.story .ids{flex:none;display:flex;gap:5px;flex-wrap:wrap;padding-top:3px}
+.id{background:#eef3fe;color:var(--blue);border-radius:6px;font-size:11.5px;
+  font-weight:700;padding:2px 7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+.why{border-left:4px solid var(--teal)}
+.conn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
+  color:#3d4a5c;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:12px 16px;margin:0 0 10px}
+.pill{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.8px;
+  border-radius:20px;padding:2px 10px;margin-right:8px;text-transform:uppercase}
+.bullish{background:#e3f3e9;color:var(--green)}
+.bearish{background:#fbe4e2;color:var(--red)}
+.point{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px}
+.watch{color:var(--muted);font-size:15px;margin:0 0 8px}
+.navline{margin:38px 0 60px;display:flex;justify-content:space-between;font-size:14.5px}
+footer.site-footer{border-top:1px solid var(--line);color:var(--muted);
+  font-size:13.5px;padding:22px 0 40px;margin-top:20px}
+/* index */
+.hero{margin:6px 0 30px}
+.hero h1{font-size:34px;margin:0 0 6px;letter-spacing:-.5px}
+.hero p{color:var(--muted);font-size:17px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:18px;margin-bottom:60px}
+.day-card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;display:block;color:inherit;transition:transform .15s,box-shadow .15s}
+.day-card:hover{text-decoration:none;transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(16,36,62,.12)}
+.day-card img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:top;display:block}
+.day-card .meta{padding:13px 16px}
+.day-card .d{font-weight:700;font-size:15px}
+.day-card .s{color:var(--muted);font-size:13px}
+.day-card .go{color:var(--blue);font-size:13.5px;font-weight:600;margin-top:6px;display:block}
+@media(max-width:600px){.hero h1{font-size:26px}}
+</style></head>
+<body>
+<header class="site-header"><div class="wrap">
+<div class="brand">AGENTIC RADAR <small>DAILY DIGEST</small></div>
+<nav><a href="index.html">All days</a><a href="https://github.com/liyue2055/agentic-radar">GitHub</a></nav>
+</div></header>
+<main class="wrap"><h1 style='font-size:28px;margin:0 0 4px'>Editor's reflection</h1><p class="date-line">Tuesday, October 6, 2026</p><figure class="poster"><img src="2026-10-06-reflect.png" alt="reflection visual for 2026-10-06"></figure><h1>Reflection — 2026-10-06</h1>
 
-<h2>Hits</h2>
-<p>- Paired [35] &lt;-&gt; [36] correctly as release-then-gate, not two models. Dual-use framing matches raw.</p>
-<p>- Paired [42] &lt;-&gt; [43] as open-weight push + distillation allegation. That&#x27;s the real tension, not just a model launch.</p>
-<p>- Paired [33] &lt;-&gt; [34] checkout-for-fee alongside hourly contact profiling. Good catch on monetization vs surveillance in same actor.</p>
-<p>- Flagged [45] as thin, [41][39] as single-sourced. Right call — no card/benchmarks for M3.1, prospectus claim and Wiedermann-Moeller claim both need primary docs.</p>
+<div class="section"><h2>Hits</h2>
+<p>Paired <span class="id">[35]</span> &lt;-&gt; <span class="id">[36]</span> correctly as release-then-gate, not two models. Dual-use framing matches raw.</p>
+<p>Paired <span class="id">[42]</span> &lt;-&gt; <span class="id">[43]</span> as open-weight push + distillation allegation. That&#x27;s the real tension, not just a model launch.</p>
+<p>Paired <span class="id">[33]</span> &lt;-&gt; <span class="id">[34]</span> checkout-for-fee alongside hourly contact profiling. Good catch on monetization vs surveillance in same actor.</p>
+<p>Flagged <span class="id">[45]</span> as thin, <span class="id">[41]</span><span class="id">[39]</span> as single-sourced. Right call — no card/benchmarks for M3.1, prospectus claim and Wiedermann-Moeller claim both need primary docs.</p>
 
-<h2>Misses</h2>
-<p>- Cited [26]&lt;-&gt;[27] and [28]&lt;-&gt;[30] in Connections but omitted both from What happened. If version bumps matter, surface them; if not, drop them. Currently incoherent.</p>
-<p>- [28] &lt;-&gt; [30] is forced. Reusable envs + Security Cloud scans are same DevDay, not a continuation. Same for [26]&lt;-&gt;[27] — trivial patch sequence, no insight.</p>
-<p>- Buried the lead on safety: [41] IPO liability warning and [39] 100+ org bypass alerts are top-3 agent stories, not Watch footnotes.</p>
-<p>- Dropped [32] Muse Gadgets ESP32/RPi SDKs entirely, then claimed persistent cross-device environments are the default target. That omission undercuts your own thesis.</p>
-<p>- Bullish open-weight take cites [49][42][46] but What happened never mentions [49][46]. Also ignores [47] GLM-5.3 on Bedrock running Strix pentest — which directly contradicts the bearish &quot;builders won&#x27;t get offensive caps&quot; line.</p>
+</div>
+<div class="section"><h2>Misses</h2>
+<p>Cited <span class="id">[26]</span>&lt;-&gt;<span class="id">[27]</span> and <span class="id">[28]</span>&lt;-&gt;<span class="id">[30]</span> in Connections but omitted both from What happened. If version bumps matter, surface them; if not, drop them. Currently incoherent.</p>
+<p><span class="id">[28]</span> &lt;-&gt; <span class="id">[30]</span> is forced. Reusable envs + Security Cloud scans are same DevDay, not a continuation. Same for <span class="id">[26]</span>&lt;-&gt;<span class="id">[27]</span> — trivial patch sequence, no insight.</p>
+<p>Buried the lead on safety: <span class="id">[41]</span> IPO liability warning and <span class="id">[39]</span> 100+ org bypass alerts are top-3 agent stories, not Watch footnotes.</p>
+<p>Dropped <span class="id">[32]</span> Muse Gadgets ESP32/RPi SDKs entirely, then claimed persistent cross-device environments are the default target. That omission undercuts your own thesis.</p>
+<p>Bullish open-weight take cites <span class="id">[49]</span><span class="id">[42]</span><span class="id">[46]</span> but What happened never mentions <span class="id">[49]</span><span class="id">[46]</span>. Also ignores <span class="id">[47]</span> GLM-5.3 on Bedrock running Strix pentest — which directly contradicts the bearish &quot;builders won&#x27;t get offensive caps&quot; line.</p>
 
-<h2>Coverage gaps</h2>
-<p>- Enterprise and sovereign beats are press-release only: [31] Desai hire, [40] $100M academy, [48] ILMUcode. No hiring memo, Anthropic curriculum, or YTL data-residency proof.</p>
-<p>- For tomorrow: query `site:sec.gov Anthropic prospectus agent liability` + `AWS Bedrock GLM-5.3 Strix` + `Meta Muse Gadgets GitHub ESP32`. Pull primaries, not rewrites.</p>
+</div>
+<div class="section"><h2>Coverage gaps</h2>
+<p>Enterprise and sovereign beats are press-release only: <span class="id">[31]</span> Desai hire, <span class="id">[40]</span> $100M academy, <span class="id">[48]</span> ILMUcode. No hiring memo, Anthropic curriculum, or YTL data-residency proof.</p>
+<p>For tomorrow: query `site:sec.gov Anthropic prospectus agent liability` + `AWS Bedrock GLM-5.3 Strix` + `Meta Muse Gadgets GitHub ESP32`. Pull primaries, not rewrites.</p>
 
-<h2>One change for tomorrow</h2>
-<p>- Enforce recall lock: every ID cited in Connections / Where this points must appear in What happened. No orphan citations.</p>
-<p><a href="2026-10-06.html">← digest</a> · <a href="index.html">all days</a></p></body></html>
+</div>
+<div class="section"><h2>One change for tomorrow</h2>
+<p>Enforce recall lock: every ID cited in Connections / Where this points must appear in What happened. No orphan citations.</p>
+
+</div><div class="navline"><a href="2026-10-06.html">← digest</a><a href="index.html">all days</a></div></main>
+<footer class="site-footer"><div class="wrap">Agentic Radar · a daily digest of agentic AI · summary of the day's reporting</div></footer>
+</body></html>

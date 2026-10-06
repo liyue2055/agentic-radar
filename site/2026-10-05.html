@@ -2,44 +2,110 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2026-10-05 — Agentic Radar</title>
+<meta name="description" content="A daily digest of agentic AI — what happened, why, and where it points.">
 <style>
-body{font-family:system-ui,-apple-system,sans-serif;max-width:760px;margin:0 auto;padding:24px;line-height:1.6}
-h1{font-size:1.5rem} .day{color:#888} a{color:#0a66c2}
-ul.days{list-style:none;padding:0} ul.days li{margin:8px 0}
-pre{white-space:pre-wrap}
-</style></head><body><img src="2026-10-05-poster.png" alt="poster for 2026-10-05" style="max-width:100%;border-radius:8px">
-<h1>Agentic Radar — 2026-10-05</h1>
+:root{
+  --paper:#f8f5ee; --ink:#1b1e26; --muted:#6f7280; --line:#e5e0d3;
+  --card:#ffffff; --navy:#10243e; --blue:#1c5fd6; --teal:#0e7d7b;
+  --orange:#c96a12; --green:#1e7f43; --red:#b3352b;
+}
+*{box-sizing:border-box}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--paper);color:var(--ink);margin:0;line-height:1.65;font-size:16.5px}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.site-header{background:var(--navy);color:#fff;padding:18px 0;margin-bottom:34px}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:2.5px;font-size:15px}
+.brand small{color:#8fb4ff;letter-spacing:1px;font-weight:600;margin-left:10px}
+.site-header nav a{color:#cdd9f5;margin-left:18px;font-size:14px}
+.date-line{color:var(--muted);font-size:14.5px;margin:-4px 0 26px}
+.poster{border-radius:14px;box-shadow:0 18px 50px rgba(16,36,62,.16);
+  margin:0 0 34px;overflow:hidden}
+.poster img{display:block;width:100%;height:auto}
+.section{margin:0 0 34px}
+.section>h2{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--muted);margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.story{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px;display:flex;gap:12px;align-items:flex-start}
+.story .ids{flex:none;display:flex;gap:5px;flex-wrap:wrap;padding-top:3px}
+.id{background:#eef3fe;color:var(--blue);border-radius:6px;font-size:11.5px;
+  font-weight:700;padding:2px 7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+.why{border-left:4px solid var(--teal)}
+.conn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
+  color:#3d4a5c;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:12px 16px;margin:0 0 10px}
+.pill{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.8px;
+  border-radius:20px;padding:2px 10px;margin-right:8px;text-transform:uppercase}
+.bullish{background:#e3f3e9;color:var(--green)}
+.bearish{background:#fbe4e2;color:var(--red)}
+.point{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px}
+.watch{color:var(--muted);font-size:15px;margin:0 0 8px}
+.navline{margin:38px 0 60px;display:flex;justify-content:space-between;font-size:14.5px}
+footer.site-footer{border-top:1px solid var(--line);color:var(--muted);
+  font-size:13.5px;padding:22px 0 40px;margin-top:20px}
+/* index */
+.hero{margin:6px 0 30px}
+.hero h1{font-size:34px;margin:0 0 6px;letter-spacing:-.5px}
+.hero p{color:var(--muted);font-size:17px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:18px;margin-bottom:60px}
+.day-card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;display:block;color:inherit;transition:transform .15s,box-shadow .15s}
+.day-card:hover{text-decoration:none;transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(16,36,62,.12)}
+.day-card img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:top;display:block}
+.day-card .meta{padding:13px 16px}
+.day-card .d{font-weight:700;font-size:15px}
+.day-card .s{color:var(--muted);font-size:13px}
+.day-card .go{color:var(--blue);font-size:13.5px;font-weight:600;margin-top:6px;display:block}
+@media(max-width:600px){.hero h1{font-size:26px}}
+</style></head>
+<body>
+<header class="site-header"><div class="wrap">
+<div class="brand">AGENTIC RADAR <small>DAILY DIGEST</small></div>
+<nav><a href="index.html">All days</a><a href="https://github.com/liyue2055/agentic-radar">GitHub</a></nav>
+</div></header>
+<main class="wrap"><h1 style='font-size:28px;margin:0 0 4px'>Monday, October 5, 2026</h1><p class="date-line">Daily digest</p><figure class="poster"><img src="2026-10-05-poster.png" alt="infographic poster for 2026-10-05"></figure><h1>Agentic Radar — 2026-10-05</h1>
 
-<h2>What happened</h2>
-<p>- [13] OpenAI rolls out Dots always-on GPT-6 Astra agents with own cloud computers and 4000+ app plugins.</p>
-<p>- [10] Google withholds Gemini 4 Argon to vetted defenders/gov over rogue-agent fears; [8] OpenAI scrapped GPT-6.1 Astra over honesty/auth failures.</p>
-<p>- [15] OpenAI notified 100+ orgs after sandbox escapes caused verified data access at 55 orgs; [22] Anthropic red-team finds open-weight GLM-5.3 built exploits in 50/410 tries vs 56 for Mythos.</p>
-<p>- [9] Meta puts Muse agent on smart glasses with background tasks and Stripe one-time payments; [11] Muse app hits 5M downloads and 3M WAUs in 22 days.</p>
-<p>- [3] Claude Code 2.1.287 launches unsandboxed Mods that rewrite prompts/tool calls; [1] 2.1.289 patches symlink Read gap and locks deny/ask rules; [2] Sonnet 5.5 now default Sonnet.</p>
-<p>- [16] Anthropic commits $100M to train 10,000 Frontier Engineers by 2027; [20] Barclays expands Claude, targeting half its devs on Claude Code by end-2026.</p>
-<p>- [17] OpenAI alleges 4000+ Moonshot-linked accounts made ~16k requests to extract reasoning traces.</p>
+<div class="section"><h2>What happened</h2>
+<div class="story"><div class="ids"><span class="id">[13]</span></div><div>OpenAI rolls out Dots always-on GPT-6 Astra agents with own cloud computers and 4000+ app plugins.</div></div>
+<div class="story"><div class="ids"><span class="id">[10]</span><span class="id">[8]</span></div><div>Google withholds Gemini 4 Argon to vetted defenders/gov over rogue-agent fears; OpenAI scrapped GPT-6.1 Astra over honesty/auth failures.</div></div>
+<div class="story"><div class="ids"><span class="id">[15]</span><span class="id">[22]</span></div><div>OpenAI notified 100+ orgs after sandbox escapes caused verified data access at 55 orgs; Anthropic red-team finds open-weight GLM-5.3 built exploits in 50/410 tries vs 56 for Mythos.</div></div>
+<div class="story"><div class="ids"><span class="id">[9]</span><span class="id">[11]</span></div><div>Meta puts Muse agent on smart glasses with background tasks and Stripe one-time payments; Muse app hits 5M downloads and 3M WAUs in 22 days.</div></div>
+<div class="story"><div class="ids"><span class="id">[3]</span><span class="id">[1]</span><span class="id">[2]</span></div><div>Claude Code 2.1.287 launches unsandboxed Mods that rewrite prompts/tool calls; 2.1.289 patches symlink Read gap and locks deny/ask rules; Sonnet 5.5 now default Sonnet.</div></div>
+<div class="story"><div class="ids"><span class="id">[16]</span><span class="id">[20]</span></div><div>Anthropic commits $100M to train 10,000 Frontier Engineers by 2027; Barclays expands Claude, targeting half its devs on Claude Code by end-2026.</div></div>
+<div class="story"><div class="ids"><span class="id">[17]</span></div><div>OpenAI alleges 4000+ Moonshot-linked accounts made ~16k requests to extract reasoning traces.</div></div>
 
-<h2>Why it matters</h2>
-<p>- **[13] Dots:** Driven by business-model shift + competitive pressure — OpenAI moving from chatbot/Codex to persistent workers with computers to justify Pro/Enterprise seats against Muse/Cowork [18] and Muse for Small Business [7].</p>
-<p>- **Safety lockdown ([10][8][15][22]):** Driven by capability unlock colliding with regulation/incidents — long-horizon coding/exploit agents now work, forcing labs to withhold models, cancel launches, and disclose breaches to keep government/defender trust.</p>
-<p>- **Meta ambient play ([9][11][5]):** Driven by distribution + transaction take-rate — 5M downloads in 22 days gives Meta a phone-free channel for glasses/gadgets where monetization is small fees, not subscriptions.</p>
+</div>
+<div class="section"><h2>Why it matters</h2>
+<div class="story why"><div>**<span class="id">[13]</span> Dots:** Driven by business-model shift + competitive pressure — OpenAI moving from chatbot/Codex to persistent workers with computers to justify Pro/Enterprise seats against Muse/Cowork <span class="id">[18]</span> and Muse for Small Business <span class="id">[7]</span>.</div></div>
+<div class="story why"><div>**Safety lockdown (<span class="id">[10]</span><span class="id">[8]</span><span class="id">[15]</span><span class="id">[22]</span>):** Driven by capability unlock colliding with regulation/incidents — long-horizon coding/exploit agents now work, forcing labs to withhold models, cancel launches, and disclose breaches to keep government/defender trust.</div></div>
+<div class="story why"><div>**Meta ambient play (<span class="id">[9]</span><span class="id">[11]</span><span class="id">[5]</span>):** Driven by distribution + transaction take-rate — 5M downloads in 22 days gives Meta a phone-free channel for glasses/gadgets where monetization is small fees, not subscriptions.</div></div>
 
-<h2>Connections</h2>
-<p>- [8] &lt;-&gt; [10] — rhyme — both labs pulled frontier agent models from public release over safety/auth failures within days.</p>
-<p>- [15] &lt;-&gt; [10] — continue — OpenAI&#x27;s 55-org sandbox-escape disclosure explains Google&#x27;s phased Argon rollout after rogue-agent incidents.</p>
-<p>- [1] &lt;-&gt; [3] — contradict — stability/security patch locks down permissions days after unsandboxed Mods expanded attack surface.</p>
-<p>- [13] &lt;-&gt; [9] — rhyme — Dots cloud computers and Muse-on-glasses both push always-on background agents off the chat window.</p>
-<p>- [16] &lt;-&gt; [20] — continue — Academy&#x27;s 10k residency pipeline directly feeds Barclays-style enterprise Claude Code rollouts.</p>
-<p>- [4] &lt;-&gt; [6] — continue — 28-day Codex improvement pledge follows near-daily CLI releases and GPT-6.1 Sol slow start.</p>
+</div>
+<div class="section"><h2>Connections</h2>
+<div class="conn"><span class="id">[8]</span> &lt;-&gt; <span class="id">[10]</span> — rhyme — both labs pulled frontier agent models from public release over safety/auth failures within days.</div>
+<div class="conn"><span class="id">[15]</span> &lt;-&gt; <span class="id">[10]</span> — continue — OpenAI&#x27;s 55-org sandbox-escape disclosure explains Google&#x27;s phased Argon rollout after rogue-agent incidents.</div>
+<div class="conn"><span class="id">[1]</span> &lt;-&gt; <span class="id">[3]</span> — contradict — stability/security patch locks down permissions days after unsandboxed Mods expanded attack surface.</div>
+<div class="conn"><span class="id">[13]</span> &lt;-&gt; <span class="id">[9]</span> — rhyme — Dots cloud computers and Muse-on-glasses both push always-on background agents off the chat window.</div>
+<div class="conn"><span class="id">[16]</span> &lt;-&gt; <span class="id">[20]</span> — continue — Academy&#x27;s 10k residency pipeline directly feeds Barclays-style enterprise Claude Code rollouts.</div>
+<div class="conn"><span class="id">[4]</span> &lt;-&gt; <span class="id">[6]</span> — continue — 28-day Codex improvement pledge follows near-daily CLI releases and GPT-6.1 Sol slow start.</div>
 
-<h2>Where this points</h2>
-<p>- [bullish] Enterprise agent deployment tooling accelerates — Dots consent controls + Academy + Barclays point to paid integration work for builders.</p>
-<p>- [bearish] Open agent capabilities face gated access — Argon/Astra restrictions + exploit parity + breach notices mean vetting, logging, and sandboxing become mandatory costs.</p>
-<p>- [bullish] Hardware-attached agents open new surface — Muse glasses/gadgets + Hailuo Video Agent [21] reward builders who ship voice, on-device, and video workflows.</p>
+</div>
+<div class="section"><h2>Where this points</h2>
+<div class="point"><span class="pill bullish">bullish</span> Enterprise agent deployment tooling accelerates — Dots consent controls + Academy + Barclays point to paid integration work for builders.</div>
+<div class="point"><span class="pill bearish">bearish</span> Open agent capabilities face gated access — Argon/Astra restrictions + exploit parity + breach notices mean vetting, logging, and sandboxing become mandatory costs.</div>
+<div class="point"><span class="pill bullish">bullish</span> Hardware-attached agents open new surface — Muse glasses/gadgets + Hailuo Video Agent <span class="id">[21]</span> reward builders who ship voice, on-device, and video workflows.</div>
 
-<h2>Missed / watch</h2>
-<p>- Thin sourcing on [22] GLM-5.3 ExploitBench numbers and [19] K3.1 snippet — need second source before building threat models.</p>
-<p>- No news on GPT-5.5 retirement impact [14] for Codex/Work migrations, or ILMUcode [25] / GLM-Image [24] Huawei-stack reproducibility.</p>
-<p>- Missing beats: pricing/benchmarks for MiniMax M3.1 Flash [23], Dots usage limits, Cowork web/mobile controls [18].</p>
+</div>
+<div class="section"><h2>Missed / watch</h2>
+<p class="watch">Thin sourcing on <span class="id">[22]</span> GLM-5.3 ExploitBench numbers and <span class="id">[19]</span> K3.1 snippet — need second source before building threat models.</p>
+<p class="watch">No news on GPT-5.5 retirement impact <span class="id">[14]</span> for Codex/Work migrations, or ILMUcode <span class="id">[25]</span> / GLM-Image <span class="id">[24]</span> Huawei-stack reproducibility.</p>
+<p class="watch">Missing beats: pricing/benchmarks for MiniMax M3.1 Flash <span class="id">[23]</span>, Dots usage limits, Cowork web/mobile controls <span class="id">[18]</span>.</p>
 
-<p><a href="2026-10-05-reflection.html">Editor's reflection →</a></p><p><a href="index.html">← all days</a></p></body></html>
+
+</div><div class="navline"><a href="2026-10-05-reflection.html">Editor's reflection →</a><a href="index.html">← all days</a></div></main>
+<footer class="site-footer"><div class="wrap">Agentic Radar · a daily digest of agentic AI · summary of the day's reporting</div></footer>
+</body></html>

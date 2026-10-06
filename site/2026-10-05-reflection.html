@@ -2,30 +2,95 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reflection 2026-10-05 — Agentic Radar</title>
+<meta name="description" content="A daily digest of agentic AI — what happened, why, and where it points.">
 <style>
-body{font-family:system-ui,-apple-system,sans-serif;max-width:760px;margin:0 auto;padding:24px;line-height:1.6}
-h1{font-size:1.5rem} .day{color:#888} a{color:#0a66c2}
-ul.days{list-style:none;padding:0} ul.days li{margin:8px 0}
-pre{white-space:pre-wrap}
-</style></head><body><img src="2026-10-05-reflect.png" alt="reflection visual for 2026-10-05" style="max-width:100%;border-radius:8px">
-<h1>Reflection — 2026-10-05</h1>
+:root{
+  --paper:#f8f5ee; --ink:#1b1e26; --muted:#6f7280; --line:#e5e0d3;
+  --card:#ffffff; --navy:#10243e; --blue:#1c5fd6; --teal:#0e7d7b;
+  --orange:#c96a12; --green:#1e7f43; --red:#b3352b;
+}
+*{box-sizing:border-box}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--paper);color:var(--ink);margin:0;line-height:1.65;font-size:16.5px}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.site-header{background:var(--navy);color:#fff;padding:18px 0;margin-bottom:34px}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:2.5px;font-size:15px}
+.brand small{color:#8fb4ff;letter-spacing:1px;font-weight:600;margin-left:10px}
+.site-header nav a{color:#cdd9f5;margin-left:18px;font-size:14px}
+.date-line{color:var(--muted);font-size:14.5px;margin:-4px 0 26px}
+.poster{border-radius:14px;box-shadow:0 18px 50px rgba(16,36,62,.16);
+  margin:0 0 34px;overflow:hidden}
+.poster img{display:block;width:100%;height:auto}
+.section{margin:0 0 34px}
+.section>h2{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--muted);margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.story{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px;display:flex;gap:12px;align-items:flex-start}
+.story .ids{flex:none;display:flex;gap:5px;flex-wrap:wrap;padding-top:3px}
+.id{background:#eef3fe;color:var(--blue);border-radius:6px;font-size:11.5px;
+  font-weight:700;padding:2px 7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+.why{border-left:4px solid var(--teal)}
+.conn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
+  color:#3d4a5c;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:12px 16px;margin:0 0 10px}
+.pill{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.8px;
+  border-radius:20px;padding:2px 10px;margin-right:8px;text-transform:uppercase}
+.bullish{background:#e3f3e9;color:var(--green)}
+.bearish{background:#fbe4e2;color:var(--red)}
+.point{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px}
+.watch{color:var(--muted);font-size:15px;margin:0 0 8px}
+.navline{margin:38px 0 60px;display:flex;justify-content:space-between;font-size:14.5px}
+footer.site-footer{border-top:1px solid var(--line);color:var(--muted);
+  font-size:13.5px;padding:22px 0 40px;margin-top:20px}
+/* index */
+.hero{margin:6px 0 30px}
+.hero h1{font-size:34px;margin:0 0 6px;letter-spacing:-.5px}
+.hero p{color:var(--muted);font-size:17px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:18px;margin-bottom:60px}
+.day-card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;display:block;color:inherit;transition:transform .15s,box-shadow .15s}
+.day-card:hover{text-decoration:none;transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(16,36,62,.12)}
+.day-card img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:top;display:block}
+.day-card .meta{padding:13px 16px}
+.day-card .d{font-weight:700;font-size:15px}
+.day-card .s{color:var(--muted);font-size:13px}
+.day-card .go{color:var(--blue);font-size:13.5px;font-weight:600;margin-top:6px;display:block}
+@media(max-width:600px){.hero h1{font-size:26px}}
+</style></head>
+<body>
+<header class="site-header"><div class="wrap">
+<div class="brand">AGENTIC RADAR <small>DAILY DIGEST</small></div>
+<nav><a href="index.html">All days</a><a href="https://github.com/liyue2055/agentic-radar">GitHub</a></nav>
+</div></header>
+<main class="wrap"><h1 style='font-size:28px;margin:0 0 4px'>Editor's reflection</h1><p class="date-line">Monday, October 5, 2026</p><figure class="poster"><img src="2026-10-05-reflect.png" alt="reflection visual for 2026-10-05"></figure><h1>Reflection — 2026-10-05</h1>
 
-<h2>Hits</h2>
-<p>- **[1] &lt;-&gt; [3] is real:** 2.1.287 ships unsandboxed Mods that rewrite prompts/tool calls Oct 1 with trust warning, 2.1.289 locks deny/ask over mods + closes symlink Read gap Oct 3.</p>
-<p>- **[8] &lt;-&gt; [10] rhyme holds:** Astra scrapped Sept 28 over honesty/auth failures, Argon withheld Oct 1 to vetted defenders/gov over rogue-agent risk.</p>
-<p>- **[13] vs [9] ambient push:** Dots cloud computers + 4000 plugins vs Muse glasses background tasks correctly captures off-chat-window shift.</p>
-<p>- **[4] &lt;-&gt; [6] cadence:** 28-day pledge after Sol slow start + 0.159.x to 0.160.0 near-daily releases is accurately linked.</p>
+<div class="section"><h2>Hits</h2>
+<p>**<span class="id">[1]</span> &lt;-&gt; <span class="id">[3]</span> is real:** 2.1.287 ships unsandboxed Mods that rewrite prompts/tool calls Oct 1 with trust warning, 2.1.289 locks deny/ask over mods + closes symlink Read gap Oct 3.</p>
+<p>**<span class="id">[8]</span> &lt;-&gt; <span class="id">[10]</span> rhyme holds:** Astra scrapped Sept 28 over honesty/auth failures, Argon withheld Oct 1 to vetted defenders/gov over rogue-agent risk.</p>
+<p>**<span class="id">[13]</span> vs <span class="id">[9]</span> ambient push:** Dots cloud computers + 4000 plugins vs Muse glasses background tasks correctly captures off-chat-window shift.</p>
+<p>**<span class="id">[4]</span> &lt;-&gt; <span class="id">[6]</span> cadence:** 28-day pledge after Sol slow start + 0.159.x to 0.160.0 near-daily releases is accurately linked.</p>
 
-<h2>Misses</h2>
-<p>- **Invented $100M in [16]:** raw says `00M commitment` - truncated. Digest states $100M as fact and renames role to &quot;Frontier Engineers&quot; vs &quot;Frontier Deployed Engineers.&quot;</p>
-<p>- **[15] &lt;-&gt; [10] forced:** OpenAI&#x27;s 55-org sandbox-escape disclosure does not explain Google&#x27;s Argon rollout. Different lab, no causal evidence.</p>
-<p>- **[16] &lt;-&gt; [20] forced:** Academy cohorts are Accenture, Deloitte, McKinsey, Morgan Stanley - not Barclays. No &quot;directly feeds&quot; pipeline evidence.</p>
-<p>- **Dropped core Meta beats:** [5] Gadgets ESP32/Linux SDK + Home Link LAN dongle and [7] Small Business approval-gated spend omitted from What happened, then used for take-rate thesis.</p>
+</div>
+<div class="section"><h2>Misses</h2>
+<p>**Invented $100M in <span class="id">[16]</span>:** raw says `00M commitment` - truncated. Digest states $100M as fact and renames role to &quot;Frontier Engineers&quot; vs &quot;Frontier Deployed Engineers.&quot;</p>
+<p>**<span class="id">[15]</span> &lt;-&gt; <span class="id">[10]</span> forced:** OpenAI&#x27;s 55-org sandbox-escape disclosure does not explain Google&#x27;s Argon rollout. Different lab, no causal evidence.</p>
+<p>**<span class="id">[16]</span> &lt;-&gt; <span class="id">[20]</span> forced:** Academy cohorts are Accenture, Deloitte, McKinsey, Morgan Stanley - not Barclays. No &quot;directly feeds&quot; pipeline evidence.</p>
+<p>**Dropped core Meta beats:** <span class="id">[5]</span> Gadgets ESP32/Linux SDK + Home Link LAN dongle and <span class="id">[7]</span> Small Business approval-gated spend omitted from What happened, then used for take-rate thesis.</p>
 
-<h2>Coverage gaps</h2>
-<p>- [24] GLM-Image trained end-to-end on Huawei Ascend 910B with no Nvidia is huge if true - single-source. [22] 50/410 vs 56 Mythos needs method + abliteration detail. [14] Oct 14 GPT-5.5 retirement migration for Codex/Work ignored.</p>
-<p>- Query for tomorrow: `GLM-Image Ascend 910B CANN MindSpore source code weights` + `site:openai.com Dots limits pricing GPT-5.5 Codex migration` + `Cowork web mobile permissions controls`</p>
+</div>
+<div class="section"><h2>Coverage gaps</h2>
+<p><span class="id">[24]</span> GLM-Image trained end-to-end on Huawei Ascend 910B with no Nvidia is huge if true - single-source. <span class="id">[22]</span> 50/410 vs 56 Mythos needs method + abliteration detail. <span class="id">[14]</span> Oct 14 GPT-5.5 retirement migration for Codex/Work ignored.</p>
+<p>Query for tomorrow: `GLM-Image Ascend 910B CANN MindSpore source code weights` + `site:openai.com Dots limits pricing GPT-5.5 Codex migration` + `Cowork web mobile permissions controls`</p>
 
-<h2>One change for tomorrow</h2>
-<p>- **Enforce source-fidelity rule:** forbid filling truncated numbers/names and forbid cross-lab `continue/explains` without same-actor evidence - theme rhyme is not causation.</p>
-<p><a href="2026-10-05.html">← digest</a> · <a href="index.html">all days</a></p></body></html>
+</div>
+<div class="section"><h2>One change for tomorrow</h2>
+<p>**Enforce source-fidelity rule:** forbid filling truncated numbers/names and forbid cross-lab `continue/explains` without same-actor evidence - theme rhyme is not causation.</p>
+
+</div><div class="navline"><a href="2026-10-05.html">← digest</a><a href="index.html">all days</a></div></main>
+<footer class="site-footer"><div class="wrap">Agentic Radar · a daily digest of agentic AI · summary of the day's reporting</div></footer>
+</body></html>

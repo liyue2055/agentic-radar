@@ -1,5 +1,7 @@
 # Agentic Radar
 
+**Live:** https://agentic-radar.vercel.app/
+
 A daily digest of agentic AI — not just *what* happened, but *why* it happened,
 what it connects to, and where the trend points.
 

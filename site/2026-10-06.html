@@ -2,44 +2,110 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2026-10-06 — Agentic Radar</title>
+<meta name="description" content="A daily digest of agentic AI — what happened, why, and where it points.">
 <style>
-body{font-family:system-ui,-apple-system,sans-serif;max-width:760px;margin:0 auto;padding:24px;line-height:1.6}
-h1{font-size:1.5rem} .day{color:#888} a{color:#0a66c2}
-ul.days{list-style:none;padding:0} ul.days li{margin:8px 0}
-pre{white-space:pre-wrap}
-</style></head><body><img src="2026-10-06-poster.png" alt="poster for 2026-10-06" style="max-width:100%;border-radius:8px">
-<h1>Agentic Radar — 2026-10-06</h1>
+:root{
+  --paper:#f8f5ee; --ink:#1b1e26; --muted:#6f7280; --line:#e5e0d3;
+  --card:#ffffff; --navy:#10243e; --blue:#1c5fd6; --teal:#0e7d7b;
+  --orange:#c96a12; --green:#1e7f43; --red:#b3352b;
+}
+*{box-sizing:border-box}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--paper);color:var(--ink);margin:0;line-height:1.65;font-size:16.5px}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.site-header{background:var(--navy);color:#fff;padding:18px 0;margin-bottom:34px}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:2.5px;font-size:15px}
+.brand small{color:#8fb4ff;letter-spacing:1px;font-weight:600;margin-left:10px}
+.site-header nav a{color:#cdd9f5;margin-left:18px;font-size:14px}
+.date-line{color:var(--muted);font-size:14.5px;margin:-4px 0 26px}
+.poster{border-radius:14px;box-shadow:0 18px 50px rgba(16,36,62,.16);
+  margin:0 0 34px;overflow:hidden}
+.poster img{display:block;width:100%;height:auto}
+.section{margin:0 0 34px}
+.section>h2{font-size:13px;letter-spacing:2.2px;text-transform:uppercase;
+  color:var(--muted);margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.story{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px;display:flex;gap:12px;align-items:flex-start}
+.story .ids{flex:none;display:flex;gap:5px;flex-wrap:wrap;padding-top:3px}
+.id{background:#eef3fe;color:var(--blue);border-radius:6px;font-size:11.5px;
+  font-weight:700;padding:2px 7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+.why{border-left:4px solid var(--teal)}
+.conn{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;
+  color:#3d4a5c;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:12px 16px;margin:0 0 10px}
+.pill{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.8px;
+  border-radius:20px;padding:2px 10px;margin-right:8px;text-transform:uppercase}
+.bullish{background:#e3f3e9;color:var(--green)}
+.bearish{background:#fbe4e2;color:var(--red)}
+.point{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:13px 16px;margin:0 0 10px}
+.watch{color:var(--muted);font-size:15px;margin:0 0 8px}
+.navline{margin:38px 0 60px;display:flex;justify-content:space-between;font-size:14.5px}
+footer.site-footer{border-top:1px solid var(--line);color:var(--muted);
+  font-size:13.5px;padding:22px 0 40px;margin-top:20px}
+/* index */
+.hero{margin:6px 0 30px}
+.hero h1{font-size:34px;margin:0 0 6px;letter-spacing:-.5px}
+.hero p{color:var(--muted);font-size:17px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:18px;margin-bottom:60px}
+.day-card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;display:block;color:inherit;transition:transform .15s,box-shadow .15s}
+.day-card:hover{text-decoration:none;transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(16,36,62,.12)}
+.day-card img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:top;display:block}
+.day-card .meta{padding:13px 16px}
+.day-card .d{font-weight:700;font-size:15px}
+.day-card .s{color:var(--muted);font-size:13px}
+.day-card .go{color:var(--blue);font-size:13.5px;font-weight:600;margin-top:6px;display:block}
+@media(max-width:600px){.hero h1{font-size:26px}}
+</style></head>
+<body>
+<header class="site-header"><div class="wrap">
+<div class="brand">AGENTIC RADAR <small>DAILY DIGEST</small></div>
+<nav><a href="index.html">All days</a><a href="https://github.com/liyue2055/agentic-radar">GitHub</a></nav>
+</div></header>
+<main class="wrap"><h1 style='font-size:28px;margin:0 0 4px'>Tuesday, October 6, 2026</h1><p class="date-line">Daily digest</p><figure class="poster"><img src="2026-10-06-poster.png" alt="infographic poster for 2026-10-06"></figure><h1>Agentic Radar — 2026-10-06</h1>
 
-<h2>What happened</h2>
-<p>- [38] OpenAI unveiled always-on Dots agents with own cloud computer and 4,000+ app plugins for Pro and Business Premium users.</p>
-<p>- [40] Anthropic announced $100M Claude Frontier Academy for 10,000 enterprise engineers by end-2027 plus Cowork web/mobile beta on Max plan.</p>
-<p>- [35] &lt;-&gt; [36] Google released Gemini 4 Argon with 1M-token output for agentic/cyber tasks, then restricted it to vetted experts and US government.</p>
-<p>- [31] Meta hired MongoDB CEO Chirantan CJ Desai as Chief Enterprise Platform Officer to bundle Muse, Business Agent, Muse API and Muse Code.</p>
-<p>- [42] &lt;-&gt; [43] Moonshot shipped open-weight Kimi-K2.7-Code (1T-param MoE) as OpenAI alleged distillation via 4,000+ linked accounts.</p>
-<p>- [33] &lt;-&gt; [34] Meta&#x27;s Muse added partner checkout on Walmart/Gap/Sephora for a fee amid report of hourly profiling of users&#x27; contacts.</p>
-<p>- [30] OpenAI gave Codex persistent reusable cloud environments plus voice CLI refresh and desktop code-review.</p>
+<div class="section"><h2>What happened</h2>
+<div class="story"><div class="ids"><span class="id">[38]</span></div><div>OpenAI unveiled always-on Dots agents with own cloud computer and 4,000+ app plugins for Pro and Business Premium users.</div></div>
+<div class="story"><div class="ids"><span class="id">[40]</span></div><div>Anthropic announced $100M Claude Frontier Academy for 10,000 enterprise engineers by end-2027 plus Cowork web/mobile beta on Max plan.</div></div>
+<div class="story"><div class="ids"><span class="id">[35]</span><span class="id">[36]</span></div><div>Google released Gemini 4 Argon with 1M-token output for agentic/cyber tasks, then restricted it to vetted experts and US government.</div></div>
+<div class="story"><div class="ids"><span class="id">[31]</span></div><div>Meta hired MongoDB CEO Chirantan CJ Desai as Chief Enterprise Platform Officer to bundle Muse, Business Agent, Muse API and Muse Code.</div></div>
+<div class="story"><div class="ids"><span class="id">[42]</span><span class="id">[43]</span></div><div>Moonshot shipped open-weight Kimi-K2.7-Code (1T-param MoE) as OpenAI alleged distillation via 4,000+ linked accounts.</div></div>
+<div class="story"><div class="ids"><span class="id">[33]</span><span class="id">[34]</span></div><div>Meta&#x27;s Muse added partner checkout on Walmart/Gap/Sephora for a fee amid report of hourly profiling of users&#x27; contacts.</div></div>
+<div class="story"><div class="ids"><span class="id">[30]</span></div><div>OpenAI gave Codex persistent reusable cloud environments plus voice CLI refresh and desktop code-review.</div></div>
 
-<h2>Why it matters</h2>
-<p>- [38] Dots: driven by business-model shift + competitive pressure vs Meta — from chat to persistent workers that justify Pro/Business Premium stickiness via plugins and cloud computers.</p>
-<p>- [40] Academy + Cowork: driven by talent bottleneck — enterprise agents fail on deployment, so Anthropic funds 10k engineers while pushing mobile tracking for long-running tasks.</p>
-<p>- [35] + [36] Argon: driven by capability unlock meeting regulation — 1M output tokens enables long-horizon cyber/coding, forcing gov-only gating over dual-use risk.</p>
+</div>
+<div class="section"><h2>Why it matters</h2>
+<div class="story why"><div><span class="id">[38]</span> Dots: driven by business-model shift + competitive pressure vs Meta — from chat to persistent workers that justify Pro/Business Premium stickiness via plugins and cloud computers.</div></div>
+<div class="story why"><div><span class="id">[40]</span> Academy + Cowork: driven by talent bottleneck — enterprise agents fail on deployment, so Anthropic funds 10k engineers while pushing mobile tracking for long-running tasks.</div></div>
+<div class="story why"><div><span class="id">[35]</span> + <span class="id">[36]</span> Argon: driven by capability unlock meeting regulation — 1M output tokens enables long-horizon cyber/coding, forcing gov-only gating over dual-use risk.</div></div>
 
-<h2>Connections</h2>
-<p>- [35] &lt;-&gt; [36] — continue — same-actor Argon release then access limit over dual-use cyber risk.</p>
-<p>- [26] &lt;-&gt; [27] — continue — same-actor Claude Code 2.1.287 Mods/side-agent followed by 2.1.289 stability pass with agent.spawn.</p>
-<p>- [28] &lt;-&gt; [30] — continue — same-actor Codex DevDay push pairing reusable cloud envs with Security Cloud scans.</p>
-<p>- [42] &lt;-&gt; [43] — contradict — same-actor open-weight Kimi push coincides with distillation allegation against Moonshot-linked accounts.</p>
-<p>- [38] &lt;-&gt; [40] — rhyme — OpenAI Dots and Anthropic Cowork both push background/long-running agents, different labs, no causation.</p>
-<p>- [31] &lt;-&gt; [40] — rhyme — Meta enterprise platform hire rhymes with Anthropic enterprise academy, parallel enterprise land-grab.</p>
+</div>
+<div class="section"><h2>Connections</h2>
+<div class="conn"><span class="id">[35]</span> &lt;-&gt; <span class="id">[36]</span> — continue — same-actor Argon release then access limit over dual-use cyber risk.</div>
+<div class="conn"><span class="id">[26]</span> &lt;-&gt; <span class="id">[27]</span> — continue — same-actor Claude Code 2.1.287 Mods/side-agent followed by 2.1.289 stability pass with agent.spawn.</div>
+<div class="conn"><span class="id">[28]</span> &lt;-&gt; <span class="id">[30]</span> — continue — same-actor Codex DevDay push pairing reusable cloud envs with Security Cloud scans.</div>
+<div class="conn"><span class="id">[42]</span> &lt;-&gt; <span class="id">[43]</span> — contradict — same-actor open-weight Kimi push coincides with distillation allegation against Moonshot-linked accounts.</div>
+<div class="conn"><span class="id">[38]</span> &lt;-&gt; <span class="id">[40]</span> — rhyme — OpenAI Dots and Anthropic Cowork both push background/long-running agents, different labs, no causation.</div>
+<div class="conn"><span class="id">[31]</span> &lt;-&gt; <span class="id">[40]</span> — rhyme — Meta enterprise platform hire rhymes with Anthropic enterprise academy, parallel enterprise land-grab.</div>
 
-<h2>Where this points</h2>
-<p>- [bullish] Persistent, cross-device agent environments become default builder target — Codex envs, Dots, Cowork all converge there.</p>
-<p>- [bearish] Frontier cyber-agentic models go gov-gated — Argon restriction signals builders won&#x27;t get top offensive capabilities.</p>
-<p>- [bullish] Open-weight moat keeps shrinking — GLM-5.2 local [49], K2.7-Code [42], MiniMax Code MIT [46] lower self-host cost.</p>
+</div>
+<div class="section"><h2>Where this points</h2>
+<div class="point"><span class="pill bullish">bullish</span> Persistent, cross-device agent environments become default builder target — Codex envs, Dots, Cowork all converge there.</div>
+<div class="point"><span class="pill bearish">bearish</span> Frontier cyber-agentic models go gov-gated — Argon restriction signals builders won&#x27;t get top offensive capabilities.</div>
+<div class="point"><span class="pill bullish">bullish</span> Open-weight moat keeps shrinking — GLM-5.2 local <span class="id">[49]</span>, K2.7-Code <span class="id">[42]</span>, MiniMax Code MIT <span class="id">[46]</span> lower self-host cost.</div>
 
-<h2>Missed / watch</h2>
-<p>- Thin: [45] M3.1-Flash-Preview has no card, benchmarks, or API listing — needs second source.</p>
-<p>- Watch: [41] IPO liability warning on agent harm and [39] 100+ org alerts on bypasses — both single-sourced, need legal/incident confirmation.</p>
-<p>- Watch: [37] Gemini Call for Me limited to Pixel 11/US, [48] ILMUcode sovereign claim — need independent verification.</p>
+</div>
+<div class="section"><h2>Missed / watch</h2>
+<p class="watch">Thin: <span class="id">[45]</span> M3.1-Flash-Preview has no card, benchmarks, or API listing — needs second source.</p>
+<p class="watch">Watch: <span class="id">[41]</span> IPO liability warning on agent harm and <span class="id">[39]</span> 100+ org alerts on bypasses — both single-sourced, need legal/incident confirmation.</p>
+<p class="watch">Watch: <span class="id">[37]</span> Gemini Call for Me limited to Pixel 11/US, <span class="id">[48]</span> ILMUcode sovereign claim — need independent verification.</p>
 
-<p><a href="2026-10-06-reflection.html">Editor's reflection →</a></p><p><a href="index.html">← all days</a></p></body></html>
+
+</div><div class="navline"><a href="2026-10-06-reflection.html">Editor's reflection →</a><a href="index.html">← all days</a></div></main>
+<footer class="site-footer"><div class="wrap">Agentic Radar · a daily digest of agentic AI · summary of the day's reporting</div></footer>
+</body></html>
