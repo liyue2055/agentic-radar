@@ -39,6 +39,11 @@ SOURCE FIDELITY — hard rules:
   sources share the actor. Thematic resemblance is noted as rhyme, never
   causation.
 
+RECALL LOCK — hard rule:
+- Every item id cited in any section (Why it matters, Connections, Where this
+  points, Missed / watch) must also appear in What happened. No orphan
+  citations: if a story is worth citing, give it one line in What happened.
+
 ## Why it matters
 For the 2-3 biggest stories: what is actually driving this? (competitive
 pressure, capability unlock, business model shift, regulation...)
