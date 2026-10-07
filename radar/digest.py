@@ -44,6 +44,14 @@ RECALL LOCK — hard rule:
   points, Missed / watch) must also appear in What happened. No orphan
   citations: if a story is worth citing, give it one line in What happened.
 
+CONTRADICTION RULE — hard rule:
+- Any launch/capability story must surface its paired risk item in the same
+  digest section (alignment failures, cancelled models, delayed disclosures,
+  distillation accusations, gated cyber releases), e.g. in Connections or
+  Why it matters. If no paired risk item exists among today's items, state
+  that explicitly ("no paired risk found"). Never present a launch story as
+  clean when a sibling risk story exists unreferenced.
+
 ## Why it matters
 For the 2-3 biggest stories: what is actually driving this? (competitive
 pressure, capability unlock, business model shift, regulation...)
