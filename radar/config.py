@@ -41,4 +41,8 @@ BEATS = {
         "Zhipu GLM release",
         "GLM coding agent",
     ],
+    "mistral": [
+        "Mistral model release",
+        "Mistral agentic AI",
+    ],
 }
