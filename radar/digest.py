@@ -30,14 +30,23 @@ Use the item ids when you reference a story. Your digest must have:
 ## What happened
 3-7 bullets, one line each: the news, no fluff.
 
+DATING / SOURCE TAGS — hard rule:
+- Any story whose item has no release date gets a [no date] tag on its line.
+- Any story resting on a single source (vendor marketing, a single leak,
+  one researcher claim, paywalled-but-uncorroborated) gets a [single source]
+  tag on its line. These tags must propagate from raw into What happened —
+  never bury them elsewhere.
+
 SOURCE FIDELITY — hard rules:
 - If an item's text is truncated (a number, name, or figure cut off), do NOT
   reconstruct it. Report it as truncated/uncertain, e.g. "[amount unclear in
   source]". Never rename a role, company, or cohort beyond what the source says.
-- Connections must be same-actor evidence, not theme rhyme: do not claim one
-  lab's event "continues", "explains", or "feeds" another lab's event unless the
-  sources share the actor. Thematic resemblance is noted as rhyme, never
-  causation.
+- Connections require shared mechanism or causal evidence, not theme rhyme:
+  do not claim one lab's event "continues", "explains", or "feeds" another
+  event unless the sources show the same underlying mechanism (shared
+  product, benchmark, exploit, policy, or supply chain) or direct causal
+  dependence. Same vendor alone is NOT enough — same-actor-only links are
+  banned. Thematic resemblance is noted as rhyme, never causation.
 
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
