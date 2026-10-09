@@ -13,6 +13,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import db
+import validate
 
 BIN = os.path.expanduser("~/workspace/skills/meta-model-api/bin")
 
@@ -110,6 +111,12 @@ def main() -> None:
     import datetime
     day = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
     markdown = build_digest(day)
+    problems = validate.check_digest(markdown)
+    if problems:
+        print(f"digest failed pre-publish validation for {day}:", file=sys.stderr)
+        for p in problems:
+            print(f"  - {p}", file=sys.stderr)
+        raise SystemExit(2)
     db.save_digest(day, markdown)
     path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                         "digests", f"{day}.md")
