@@ -54,6 +54,13 @@ RECALL LOCK — hard rule:
   points, Missed / watch) must also appear in What happened. No orphan
   citations: if a story is worth citing, give it one line in What happened.
 
+COVERAGE LOCK — hard rule:
+- Every item id in What happened must be used in Why it matters, Connections,
+  or Where this points — or the digest ends with "## Orphaned" listing each
+  unused id with one line explaining why it deserved no further analysis.
+  No drop-and-run synthesis: if a story merited a What-happened line, it must
+  either be analyzed or explicitly marked orphaned.
+
 CONTRADICTION RULE — hard rule:
 - Any launch/capability story must surface its paired risk item in the same
   digest section (alignment failures, cancelled models, delayed disclosures,
