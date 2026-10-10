@@ -88,8 +88,11 @@ def build_digest(day: str) -> str:
         raise SystemExit(f"no items collected for {day}; run the collector first")
     item_lines = []
     for it in items:
+        date_line = (f"\n    Published: {it['date_published']}"
+                     if it.get("date_published") else "\n    Published: unknown")
         item_lines.append(
-            f"[{it['id']}] ({it['beat']}) {it['title']}\n    {it['summary']}\n    {it['url']}")
+            f"[{it['id']}] ({it['beat']}) {it['title']}{date_line}\n"
+            f"    {it['summary']}\n    {it['url']}")
     payload = {
         "model": "muse-spark-1.3",
         "reasoning_effort": "medium",

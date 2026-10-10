@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS items (
     title TEXT NOT NULL,
     url TEXT,
     summary TEXT,
+    date_published TEXT,           -- YYYY-MM-DD of the story's publication, when known
     created_at TEXT DEFAULT (datetime('now'))
 );
 CREATE TABLE IF NOT EXISTS digests (
@@ -56,15 +57,24 @@ def connect() -> sqlite3.Connection:
     return conn
 
 
-def add_item(day: str, beat: str, title: str, url: str = "", summary: str = "") -> int:
+def add_item(day: str, beat: str, title: str, url: str = "", summary: str = "",
+           date_published: str | None = None) -> int:
     conn = connect()
     cur = conn.execute(
-        "INSERT INTO items (day, beat, title, url, summary) VALUES (?,?,?,?,?)",
-        (day, beat, title, url, summary))
+        "INSERT INTO items (day, beat, title, url, summary, date_published) VALUES (?,?,?,?,?,?)",
+        (day, beat, title, url, summary, date_published))
     conn.commit()
     item_id = cur.lastrowid
     conn.close()
     return item_id
+
+
+def set_date_published(item_id: int, date_published: str | None) -> None:
+    conn = connect()
+    conn.execute("UPDATE items SET date_published=? WHERE id=?",
+                 (date_published, item_id))
+    conn.commit()
+    conn.close()
 
 
 def items_on(day: str) -> list[dict]:
