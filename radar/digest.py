@@ -33,9 +33,13 @@ Use the item ids when you reference a story. Your digest must have:
 
 DATING / SOURCE TAGS — hard rule:
 - Any story whose item has no release date gets a [no date] tag on its line.
-- Any story resting on a single source (vendor marketing, a single leak,
-  one researcher claim, paywalled-but-uncorroborated) gets a [single source]
-  tag on its line. These tags must propagate from raw into What happened —
+- Any story resting on a single source gets a [single source] tag on its
+  line. Count sources by INDEPENDENT OUTLET, not by document: a vendor
+  announcement plus that vendor's own red-team report, telemetry, or blog
+  counts as ONE source (vendor telemetry quoting the vendor is not
+  corroboration). Two genuinely independent outlets — vendor announcement
+  plus third-party reporting, or vendor plus a different lab's public work
+  — remove the tag. These tags must propagate from raw into What happened —
   never bury them elsewhere.
 
 SOURCE FIDELITY — hard rules:
@@ -65,9 +69,18 @@ CONTRADICTION RULE — hard rule:
 - Any launch/capability story must surface its paired risk item in the same
   digest section (alignment failures, cancelled models, delayed disclosures,
   distillation accusations, gated cyber releases), e.g. in Connections or
-  Why it matters. If no paired risk item exists among today's items, state
-  that explicitly ("no paired risk found"). Never present a launch story as
-  clean when a sibling risk story exists unreferenced.
+  Why it matters. Paired risks are cross-cutting, not cluster-local: an
+  alignment failure or exploit-parity finding elsewhere counts. The phrase
+  "no paired risk found" is banned — never claim absence when a risk item
+  exists in another cluster. Never present a launch story as clean when a
+  sibling risk story exists unreferenced.
+
+NO SILENT OMITS — hard rule:
+- High-severity items (security escapes, training halts, cancelled models,
+  exploit parity findings, broken interop defaults) must never be dropped
+  silently from What happened. If one does not get a full line, it MUST
+  appear under Missed / watch with a caveat explaining why it was
+  deprioritized (thin sourcing, single outlet) rather than omitted.
 
 ## Why it matters
 For the 2-3 biggest stories: what is actually driving this? (competitive
