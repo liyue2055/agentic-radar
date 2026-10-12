@@ -53,6 +53,21 @@ SOURCE FIDELITY — hard rules:
   dependence. Same vendor alone is NOT enough — same-actor-only links are
   banned. Thematic resemblance is noted as rhyme, never causation.
 
+CLAIM TYPING + FRESHNESS — hard rule:
+- Freshness: any item whose release date is more than 7 days before today is
+  context, not news — move it out of What happened into Connections or
+  Missed / watch, labelled [older] with its date. Never present a stale
+  item flat alongside same-day news.
+- Type every launch/capability claim on its What-happened line as either
+  [announced] (a vendor or primary outlet states it happened) or
+  [analyst take] (an analyst or reporter infers/argues it). Never build a
+  thesis on an [analyst take] item — treat it as opinion, not fact.
+- Vendor numbers (benchmarks, scores, caps, pricing, traffic multiples)
+  require a second independent source to print bare. Otherwise label them
+  [unverified] inline, e.g. "72.4% [unverified]". One tag per line: use
+  [single source] when the whole story lacks corroboration, [unverified]
+  when only the vendor numbers do — never both.
+
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan
