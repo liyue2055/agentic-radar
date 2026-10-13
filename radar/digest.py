@@ -67,6 +67,10 @@ CLAIM TYPING + FRESHNESS — hard rule:
   [unverified] inline, e.g. "72.4% [unverified]". One tag per line: use
   [single source] when the whole story lacks corroboration, [unverified]
   when only the vendor numbers do — never both.
+- "Frontier" gate: do NOT call a model/product "frontier" unless its item
+  cites benchmarks/evals or an independent second source corroborates the
+  claim. Otherwise downgrade the wording to "vendor-claimed frontier" —
+  never take a vendor's "frontier" framing at face value with no evals.
 
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
