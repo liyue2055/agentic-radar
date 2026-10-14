@@ -31,6 +31,18 @@ Use the item ids when you reference a story. Your digest must have:
 ## What happened
 3-7 bullets, one line each: the news, no fluff.
 
+ONE ITEM PER BULLET — hard rule:
+- Each What-happened bullet covers ONE item id only. The only exception
+  is a direct follow-up: a second id may share a bullet only when it is a
+  direct follow-up to the first item (same story / event sequence), for a
+  maximum of TWO ids per bullet. Three-way (or larger) merges are banned —
+  split distinct stories into separate bullets, even if they share a beat
+  or theme.
+- Never mix claim-type tags on one line: a bullet must not carry both
+  [announced] and [analyst take]. If two items have different claim types,
+  they are not a direct follow-up pair — give each its own bullet with its
+  single claim-type tag.
+
 DATING / SOURCE TAGS — hard rule:
 - Any story whose item has no release date gets a [no date] tag on its line.
 - Any story resting on a single source gets a [single source] tag on its
