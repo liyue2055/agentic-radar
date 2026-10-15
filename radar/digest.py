@@ -89,6 +89,16 @@ RECALL LOCK — hard rule:
   points, Missed / watch) must also appear in What happened. No orphan
   citations: if a story is worth citing, give it one line in What happened.
 
+CITATION INTEGRITY — hard rule:
+- Every id cited in Why it matters, Connections, or Where this points must
+  itself contain the predicate claimed for it. Before citing an id for a
+  claim (e.g. "persistent identity", "Gemini push", "model routing"), check
+  that id's own What-happened line / raw item actually states that predicate
+  — never borrow a predicate from a neighbouring item, a shared beat, or the
+  vendor's wider narrative. If no cited id contains the claimed predicate,
+  drop the claim or re-scope it to only the ids that do. A pairing of two
+  ids must have the claimed mechanism present in BOTH ids, not just one.
+
 COVERAGE LOCK — hard rule:
 - Every item id in What happened must be used in Why it matters, Connections,
   or Where this points — or the digest ends with "## Orphaned" listing each
