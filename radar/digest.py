@@ -88,6 +88,14 @@ RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan
   citations: if a story is worth citing, give it one line in What happened.
+  Sole exception: a "Rejected [id]" line in Missed / watch (see RECALL GATE).
+
+RECALL GATE — hard rule:
+- Every raw item id must be accounted for somewhere in the digest: either
+  it appears in What happened, or Missed / watch lists it as
+  "Rejected [id] — <one-line reason>" (duplicate, stale, off-beat, thin
+  sourcing, or low impact). No silent drops: an id that appears nowhere
+  fails pre-publish validation and blocks the digest.
 
 CITATION INTEGRITY — hard rule:
 - Every id cited in Why it matters, Connections, or Where this points must
@@ -138,7 +146,8 @@ for builders? Mark each [bullish] or [bearish] with one line of reasoning.
 
 ## Missed / watch
 Anything that looks thin or missing — beats with no news, stories that need
-a second source.
+a second source. Plus one "Rejected [id] — <reason>" line for every raw
+item not used in What happened (RECALL GATE).
 
 Keep the whole thing under 600 words. Markdown, no preamble."""
 
@@ -175,7 +184,8 @@ def main() -> None:
     import datetime
     day = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
     markdown = build_digest(day)
-    problems = validate.check_digest(markdown)
+    expected_ids = [str(it["id"]) for it in db.items_on(day)]
+    problems = validate.check_digest(markdown, expected_ids=expected_ids)
     if problems:
         print(f"digest failed pre-publish validation for {day}:", file=sys.stderr)
         for p in problems:
