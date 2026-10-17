@@ -107,6 +107,20 @@ CITATION INTEGRITY — hard rule:
   drop the claim or re-scope it to only the ids that do. A pairing of two
   ids must have the claimed mechanism present in BOTH ids, not just one.
 
+SPEC FIDELITY — hard rule:
+- Every attribute in Why it matters, Connections, or Where this points —
+  context size, parameter/active counts, pricing, tier names, agent counts,
+  traffic multiples, capability labels — must trace verbatim to that same
+  item's raw title/summary. Never transfer a spec from a paired item to
+  complete a rhyme (e.g. do not give a model a 1M context its own item
+  never states), and never re-read a feature name (e.g. review tiers) as a
+  different mechanism (e.g. multi-agent steering).
+- Rejected items are quarantined: no predicate, framing, or vocabulary
+  from a Rejected item may appear in Why it matters, Connections, or
+  Where this points, even re-cited to a different id. If a prediction
+  needs that predicate, it must be stated by a What-happened item itself
+  or the prediction is dropped.
+
 COVERAGE LOCK — hard rule:
 - Every item id in What happened must be used in Why it matters, Connections,
   or Where this points — or the digest ends with "## Orphaned" listing each
