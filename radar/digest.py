@@ -65,6 +65,24 @@ SOURCE FIDELITY — hard rules:
   dependence. Same vendor alone is NOT enough — same-actor-only links are
   banned. Thematic resemblance is noted as rhyme, never causation.
 
+PRIMARY BEATS SINGLE — hard rule:
+- A primary source IS confirmation, even when it is the only source:
+  an official changelog (e.g. github.blog/changelog, a vendor changelog),
+  deprecation / shutdown notice, release notes, or official product post
+  counts as confirmed on its own. Never Reject such an item as "needs
+  vendor confirmation" or "thin sourcing", and never treat its own
+  changelog as lacking the vendor's confirmation — it is that confirmation.
+  Model removals / deprecations / shutdowns from a primary source are
+  high-severity (they break builds): give them a What-happened line and,
+  when the impact is broad, treat them as a lead / biggest story.
+- The converse also holds: a vendor benchmark, launch brief, or
+  availability claim resting only on that vendor's own reporting is NOT
+  confirmed by being the vendor's own post. Demote such items: they may
+  appear in What happened flagged [single source] / [unverified], but do
+  not make them a lead or one of the biggest stories in Why it matters
+  until a second independent source corroborates them — otherwise move
+  them to Missed / watch pending that second source.
+
 CLAIM TYPING + FRESHNESS — hard rule:
 - Freshness: any item whose release date is more than 7 days before today is
   context, not news — move it out of What happened into Connections or
@@ -140,7 +158,8 @@ CONTRADICTION RULE — hard rule:
 
 NO SILENT OMITS — hard rule:
 - High-severity items (security escapes, training halts, cancelled models,
-  exploit parity findings, broken interop defaults) must never be dropped
+  model removals / deprecations / shutdowns, exploit parity findings,
+  broken interop defaults) must never be dropped
   silently from What happened. If one does not get a full line, it MUST
   appear under Missed / watch with a caveat explaining why it was
   deprioritized (thin sourcing, single outlet) rather than omitted.
