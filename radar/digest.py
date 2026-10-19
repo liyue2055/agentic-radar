@@ -172,6 +172,12 @@ pressure, capability unlock, business model shift, regulation...)
 Link today's stories to EARLIER ones when they continue, contradict, or
 rhyme with them. Format each as: [idA] <-> [idB] — relation — one-line note.
 Only link when the connection is real.
+CONTRADICTS LABEL — hard rule: use "contradicts" ONLY for a direct factual
+conflict — the two items make incompatible claims about the same fact,
+metric, date, or capability. Thematic tension, throughput-vs-auditability,
+speed-vs-safety, or any other vibe contrast is NOT a contradiction: label
+that "rhymes" / thematic, or drop the link. Ban "contradicts" for thematic
+tension.
 
 ## Where this points
 1-3 short predictions: what trend is accelerating, and is it good or bad
