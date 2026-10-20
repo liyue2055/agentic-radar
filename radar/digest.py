@@ -75,6 +75,17 @@ PRIMARY BEATS SINGLE — hard rule:
   Model removals / deprecations / shutdowns from a primary source are
   high-severity (they break builds): give them a What-happened line and,
   when the impact is broad, treat them as a lead / biggest story.
+- NON-PRIMARY REMOVAL / MODEL-ID GATE — hard rule: the primary-source
+  exception above applies ONLY when the item's own source is the official
+  changelog / docs / deprecation notice itself (e.g. its URL is the
+  github.blog/changelog or vendor notice). A secondary report, timeline
+  note, or analyst/social summary ABOUT a removal, deprecation, or future
+  model — however confident its tone — is NOT primary, and neither are
+  unreleased / unverified model IDs or dates it names. If no official
+  changelog/docs backs a removal / deprecation / model-ID claim, cap it
+  at Missed / watch: never lead with it, never make it a biggest story in
+  Why it matters, and do not state its model IDs or dates as confirmed
+  fact (tag it [single source] / [unverified] instead).
 - The converse also holds: a vendor benchmark, launch brief, or
   availability claim resting only on that vendor's own reporting is NOT
   confirmed by being the vendor's own post. Demote such items: they may
