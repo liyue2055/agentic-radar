@@ -93,6 +93,17 @@ PRIMARY BEATS SINGLE — hard rule:
   not make them a lead or one of the biggest stories in Why it matters
   until a second independent source corroborates them — otherwise move
   them to Missed / watch pending that second source.
+- PRIMARY ARTIFACT GATE — hard rule (2026-10-20 reflection):
+  Demote ALL single-source vendor/lab claims to Missed / watch unless
+  the item links to a primary artifact: an official changelog/release
+  notes, a public repo (with license/weights where "open-sourced" is
+  claimed), a demo video, or a second independent outlet. No artifact,
+  no lead: such items must NOT appear as a What-happened lead nor in
+  Why it matters / Where this points as firm fact. Apply this bar
+  evenly — do not reject one vendor claim for lack of corroboration
+  while accepting another lab's swarm/benchmark numbers on the same
+  evidence level. Never word a release as "open-sourced" unless the
+  item itself cites a repo/license/weights link.
 
 CLAIM TYPING + FRESHNESS — hard rule:
 - Freshness: any item whose release date is more than 7 days before today is
