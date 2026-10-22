@@ -8,7 +8,8 @@ by the nightly reflection:
     (orphan citations / recall-lock violations)
   - raw item ids that appear nowhere in the digest (recall-gate
     violations: silently dropped items must instead be listed as
-    "Rejected [id] — reason" in Missed / watch)
+    "Rejected [id] — reason" in Missed / watch, or, for versioned
+    release claims, "Watch [id] — need primary URL: reason")
 
 Used by digest.py before it saves anything; on failure it exits non-zero so
 the cron fails loud instead of publishing a broken digest.
@@ -105,7 +106,7 @@ def check_digest(markdown: str, expected_ids=None) -> list[str]:
             if str(eid) not in present:
                 problems.append(
                     f"recall gate: raw item [{eid}] appears nowhere — "
-                    "include it or list it as Rejected in Missed / watch"
+                    "include it or list it as Rejected / Watch in Missed / watch"
                 )
 
     return sorted(set(problems))

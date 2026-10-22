@@ -104,6 +104,16 @@ PRIMARY BEATS SINGLE — hard rule:
   while accepting another lab's swarm/benchmark numbers on the same
   evidence level. Never word a release as "open-sourced" unless the
   item itself cites a repo/license/weights link.
+- VERSIONED RELEASE WATCH GATE — hard rule (2026-10-21 reflection):
+  Replace binary Reject with "Watch - need primary URL" for any
+  versioned release claim (an item naming a specific version, e.g.
+  Claude Code 2.1.302 or Codex CLI 0.163): do NOT Reject it for thin
+  sourcing alone. List it in Missed / watch as
+  "Watch [id] — need primary URL: <one-line reason>" and keep it
+  there until a primary changelog/repo confirms or denies it.
+  Preserve version ordering — a higher version is newer, never
+  invert chronology (e.g. 2.1.302 > 2.1.299, so 2.1.302 is not
+  older / superseded by 2.1.299).
 
 CLAIM TYPING + FRESHNESS — hard rule:
 - Freshness: any item whose release date is more than 7 days before today is
@@ -128,13 +138,17 @@ RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan
   citations: if a story is worth citing, give it one line in What happened.
-  Sole exception: a "Rejected [id]" line in Missed / watch (see RECALL GATE).
+  Sole exception: a "Rejected [id]" or "Watch [id] — need primary URL"
+  line in Missed / watch (see RECALL GATE).
 
 RECALL GATE — hard rule:
 - Every raw item id must be accounted for somewhere in the digest: either
   it appears in What happened, or Missed / watch lists it as
   "Rejected [id] — <one-line reason>" (duplicate, stale, off-beat, thin
-  sourcing, or low impact). No silent drops: an id that appears nowhere
+  sourcing, or low impact) — except versioned release claims, which
+  Missed / watch lists as "Watch [id] — need primary URL: <reason>"
+  under the VERSIONED RELEASE WATCH GATE instead of Rejecting them.
+  No silent drops: an id that appears nowhere
   fails pre-publish validation and blocks the digest.
 
 CITATION INTEGRITY — hard rule:
@@ -208,7 +222,8 @@ for builders? Mark each [bullish] or [bearish] with one line of reasoning.
 ## Missed / watch
 Anything that looks thin or missing — beats with no news, stories that need
 a second source. Plus one "Rejected [id] — <reason>" line for every raw
-item not used in What happened (RECALL GATE).
+item not used in What happened (RECALL GATE), except versioned release
+claims, which get a "Watch [id] — need primary URL: <reason>" line instead.
 
 Keep the whole thing under 600 words. Markdown, no preamble."""
 
