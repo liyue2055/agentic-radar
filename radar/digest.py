@@ -104,6 +104,21 @@ PRIMARY BEATS SINGLE — hard rule:
   while accepting another lab's swarm/benchmark numbers on the same
   evidence level. Never word a release as "open-sourced" unless the
   item itself cites a repo/license/weights link.
+- CVE / MODEL-ID / COUNT CLAIM GATE — hard rule (2026-10-22 reflection):
+  Require a primary artifact link for any CVE, model-ID, or count claim
+  before promotion — no primary, no headline, stays in Watch. Specifically:
+  a CVE ID needs an NVD / vendor-advisory entry, a specific (especially
+  unreleased) model ID needs an official changelog / model card / docs
+  page, and a quantitative count claim (e.g. "10 projects", "70+
+  platforms", "1M skills", "10M setups") needs a foundation repo /
+  registry / marketplace listing or other primary registry record —
+  a single vendor/lab post reporting its own CVE, model ID, or count
+  is NOT that artifact. If no such primary artifact is linked in the
+  item, cap it at Missed / watch as
+  "Watch [id] — need primary artifact: <one-line reason>", never as a
+  What-happened headline and never as firm fact in Why it matters /
+  Where this points (tag any retained mention [single source] /
+  [unverified]).
 - VERSIONED RELEASE WATCH GATE — hard rule (2026-10-21 reflection):
   Replace binary Reject with "Watch - need primary URL" for any
   versioned release claim (an item naming a specific version, e.g.
