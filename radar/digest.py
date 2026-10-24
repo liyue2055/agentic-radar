@@ -189,6 +189,14 @@ SPEC FIDELITY — hard rule:
   Where this points, even re-cited to a different id. If a prediction
   needs that predicate, it must be stated by a What-happened item itself
   or the prediction is dropped.
+- REJECTED-ID BAN — hard rule (2026-10-23 reflection): a Rejected [id]
+  must not be cited by id, nor drive a thesis, takeaway, or prediction,
+  in Why it matters or Where this points. If a rejected item supports
+  the thesis, do not keep it Rejected and use it anyway — promote it in
+  Missed / watch to "Watch [id] — need primary URL: <reason>" (or
+  "Watch [id] — need primary artifact: <reason>") and treat any retained
+  mention only as flagged [single source] / [unverified] watch-level,
+  never as firm fact.
 
 COVERAGE LOCK — hard rule:
 - Every item id in What happened must be used in Why it matters, Connections,
