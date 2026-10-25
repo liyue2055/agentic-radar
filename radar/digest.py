@@ -104,6 +104,15 @@ PRIMARY BEATS SINGLE — hard rule:
   while accepting another lab's swarm/benchmark numbers on the same
   evidence level. Never word a release as "open-sourced" unless the
   item itself cites a repo/license/weights link.
+- SYNTHESIS GATE — hard rule (2026-10-24 reflection):
+  Block synthesis when inputs are watch / single-source: do NOT build
+  any Why it matters thesis, Connections claim, or Where this points
+  prediction from an item that is Watch-listed, tagged [single source]
+  or [unverified], or lacks a primary URL / commit / docs link. Such
+  items stay in What happened (flagged) or Missed / watch only, until
+  a primary artifact or a second independent source arrives. Lead
+  Why it matters / Where this points only with verified items that
+  carry a primary artifact or independent corroboration.
 - CVE / MODEL-ID / COUNT CLAIM GATE — hard rule (2026-10-22 reflection):
   Require a primary artifact link for any CVE, model-ID, or count claim
   before promotion — no primary, no headline, stays in Watch. Specifically:
