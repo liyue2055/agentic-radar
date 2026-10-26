@@ -39,7 +39,8 @@ ONE ITEM PER BULLET — hard rule:
   split distinct stories into separate bullets, even if they share a beat
   or theme.
 - Never mix claim-type tags on one line: a bullet must not carry both
-  [announced] and [analyst take]. If two items have different claim types,
+  an announced-type tag ([announced-live] / [announced-coming] /
+  [case-study]) and [analyst take]. If two items have different claim types,
   they are not a direct follow-up pair — give each its own bullet with its
   single claim-type tag.
 
@@ -144,10 +145,24 @@ CLAIM TYPING + FRESHNESS — hard rule:
   context, not news — move it out of What happened into Connections or
   Missed / watch, labelled [older] with its date. Never present a stale
   item flat alongside same-day news.
-- Type every launch/capability claim on its What-happened line as either
-  [announced] (a vendor or primary outlet states it happened) or
-  [analyst take] (an analyst or reporter infers/argues it). Never build a
-  thesis on an [analyst take] item — treat it as opinion, not fact.
+- Type every launch/capability claim on its What-happened line as one of
+  [announced-live] (a vendor or primary outlet states it happened AND
+  it is GA / purchasable / usable today), [announced-coming] (announced,
+  preview, or in progressive rollout but NOT yet GA / purchasable),
+  [case-study] (a vendor/customer case-study blog or deployment story,
+  not a product launch — do not present it as a launch), or
+  [analyst take] (an analyst or reporter infers/argues it). Plain
+  [announced] alone is banned — always use the live/coming/case-study
+  split. Never build a thesis on an [analyst take] item — treat it as
+  opinion, not fact.
+- ANNOUNCED SPLIT GATE — hard rule (2026-10-25 reflection):
+  Block [announced-coming] and [case-study] items from bullish
+  adoption takeaways: such items must NOT drive a [bullish] Where this
+  points prediction, a lead Why it matters thesis, or wording like
+  "accelerates" / live-adoption claims as if the capability were
+  already purchasable / deployed at scale. Retain their coming /
+  case-study qualifier in any retained mention, and scope any
+  takeaway to pipeline / early-evidence only until GA is confirmed.
 - Vendor numbers (benchmarks, scores, caps, pricing, traffic multiples)
   require a second independent source to print bare. Otherwise label them
   [unverified] inline, e.g. "72.4% [unverified]". One tag per line: use
