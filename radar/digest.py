@@ -222,6 +222,23 @@ SPEC FIDELITY — hard rule:
   mention only as flagged [single source] / [unverified] watch-level,
   never as firm fact.
 
+ID-DISCIPLINE — hard rule (2026-10-26 reflection):
+- In Why it matters and Where this points, do not merge ids in one
+  bullet to borrow a predicate from a neighbouring id: every claim in
+  the bullet must be true of EACH id cited for it. For example, do not
+  cite a hold-idle runner item for a role-gating claim that belongs to
+  a different item — hold-idle is not role-gating. If a claim belongs
+  to only one id, cite only that id, or drop the claim.
+- Never write "corroborated by two outlets", "second source", "two
+  sources", or similar unless the outlets are independent of each
+  other AND independent of the vendor. Two items from the same vendor
+  drop, a vendor announcement repeated / syndicated by another outlet,
+  or a vendor post plus that vendor's own report count as ONE source.
+  If independence is not shown in the raw items, label the claim
+  [single source] / [unverified] instead. Vendor benchmarks remain
+  unverified even when the same vendor drop is reported twice.
+  Synthesis that violates this rule fails — rewrite it before output.
+
 COVERAGE LOCK — hard rule:
 - Every item id in What happened must be used in Why it matters, Connections,
   or Where this points — or the digest ends with "## Orphaned" listing each
