@@ -163,6 +163,13 @@ CLAIM TYPING + FRESHNESS — hard rule:
   already purchasable / deployed at scale. Retain their coming /
   case-study qualifier in any retained mention, and scope any
   takeaway to pipeline / early-evidence only until GA is confirmed.
+- LIVE-VS-PREVIEW PROMOTION — hard rule (2026-10-27 reflection):
+  When selecting the 2-3 biggest stories for Why it matters, rank an
+  [announced-live] item (GA / purchasable / usable today) above any
+  [announced-coming] / preview item. A preview must NOT anchor a lead
+  Why it matters thesis or a [bullish] builder thesis in Where this
+  points unless its own item states pricing AND GA / purchasability
+  — a preview with no pricing is pipeline evidence only.
 - Vendor numbers (benchmarks, scores, caps, pricing, traffic multiples)
   require a second independent source to print bare. Otherwise label them
   [unverified] inline, e.g. "72.4% [unverified]". One tag per line: use
