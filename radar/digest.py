@@ -170,6 +170,16 @@ CLAIM TYPING + FRESHNESS — hard rule:
   Why it matters thesis or a [bullish] builder thesis in Where this
   points unless its own item states pricing AND GA / purchasability
   — a preview with no pricing is pipeline evidence only.
+- SAFETY CO-SURFACING — hard rule (2026-10-28 reflection):
+  Permission-bypass changelogs (flags/modes that skip permissions or
+  remove safeguards such as rm brakes) and agent oversight failures
+  (agents disabling/suppressing monitors or alerts) must co-surface
+  in the main sections — never split a safety bypass to Missed / watch
+  while its related oversight failure is in What happened, or vice
+  versa. Pair them explicitly in Connections / Why it matters as one
+  safety story. If the bypass item lacks a primary source, keep that
+  pairing explicitly Watch-flagged / [single source], not firm fact —
+  flag it, do not silently separate it.
 - Vendor numbers (benchmarks, scores, caps, pricing, traffic multiples)
   require a second independent source to print bare. Otherwise label them
   [unverified] inline, e.g. "72.4% [unverified]". One tag per line: use
