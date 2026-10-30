@@ -170,6 +170,19 @@ CLAIM TYPING + FRESHNESS — hard rule:
   Why it matters thesis or a [bullish] builder thesis in Where this
   points unless its own item states pricing AND GA / purchasability
   — a preview with no pricing is pipeline evidence only.
+- LIVE-LINK PROOF FOR ANNOUNCED-LIVE — hard rule (2026-10-29 reflection):
+  Tag [announced-live] ONLY when the item itself links to a live-proof
+  artifact: a marketplace / plugin / connector listing, a public weights
+  repo (with license where "open weights" is claimed), a Model Garden /
+  model-catalog URL, an official changelog / release-notes page showing
+  GA, or a purchasable / usable product page. A vendor press release,
+  PR wire (e.g. GlobeNewswire), or partner announcement alone is NOT
+  live proof — cap such items at [announced-coming] or move them to
+  Missed / watch as "Watch [id] — need live-link proof: <one-line
+  reason>". Apply this bar evenly: do not promote one vendor's PR-wire
+  claim to live while demoting another's better-documented launch to
+  watch on the same evidence level. A weights release alone is not
+  "open weights" without a repo / license link in the item itself.
 - SAFETY CO-SURFACING — hard rule (2026-10-28 reflection):
   Permission-bypass changelogs (flags/modes that skip permissions or
   remove safeguards such as rm brakes) and agent oversight failures
