@@ -170,6 +170,17 @@ CLAIM TYPING + FRESHNESS — hard rule:
   Why it matters thesis or a [bullish] builder thesis in Where this
   points unless its own item states pricing AND GA / purchasability
   — a preview with no pricing is pipeline evidence only.
+- BUILDER-ACTIONABILITY RANKING — hard rule (2026-10-30 reflection):
+  Order and select What happened by builder actionability, NOT by
+  novelty / oddity. Rank first: (1) confirmed weight drops with a
+  repo / license link, (2) API / product GA or beta a builder can
+  use today, and (3) deployed agent incidents with operational
+  lessons. Funding rumors / raises and confirmed non-releases
+  (a check that a rumoured model/product does NOT exist or has not
+  shipped) are context, not leads: never lead What happened with
+  them, never put them in the top 5 ahead of an actionable item,
+  and never make them a biggest story in Why it matters — keep
+  them as a later What-happened line or in Missed / watch.
 - LIVE-LINK PROOF FOR ANNOUNCED-LIVE — hard rule (2026-10-29 reflection):
   Tag [announced-live] ONLY when the item itself links to a live-proof
   artifact: a marketplace / plugin / connector listing, a public weights
