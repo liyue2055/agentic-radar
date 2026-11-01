@@ -181,6 +181,22 @@ CLAIM TYPING + FRESHNESS — hard rule:
   them, never put them in the top 5 ahead of an actionable item,
   and never make them a biggest story in Why it matters — keep
   them as a later What-happened line or in Missed / watch.
+- IMPORTANCE-VS-VERIFIABILITY SPLIT — hard rule (2026-10-31 reflection):
+  Split verifiability from importance: lack of a primary URL alone does
+  NOT demote an item to Missed / watch if it is (a) reported by at least
+  two genuinely independent outlets, or (b) a versioned release claim
+  naming a specific version. Give such an item a full What-happened
+  line tagged [no primary link] instead of burying it in Watch.
+  Reserve Watch for true single-source unverified items. This does NOT
+  lift the CVE / MODEL-ID / COUNT CLAIM GATE: those specific claims
+  still need their primary artifact before being stated as firm fact,
+  even on a [no primary link] line.
+  PRIORITY OVERRIDE: safety-boundary changes and time-critical
+  shutdown / deprecation deadlines (with a stated date) outrank
+  [analyst take] items and packaging-only renames / rebrands in
+  What happened and Why it matters selection. Never bury a
+  multi-outlet safety or shutdown item in Watch while keeping a
+  weak single-source analyst take or rename in the main sections.
 - LIVE-LINK PROOF FOR ANNOUNCED-LIVE — hard rule (2026-10-29 reflection):
   Tag [announced-live] ONLY when the item itself links to a live-proof
   artifact: a marketplace / plugin / connector listing, a public weights
