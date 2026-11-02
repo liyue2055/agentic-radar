@@ -197,6 +197,19 @@ CLAIM TYPING + FRESHNESS — hard rule:
   What happened and Why it matters selection. Never bury a
   multi-outlet safety or shutdown item in Watch while keeping a
   weak single-source analyst take or rename in the main sections.
+- PRIMARY-LINK GATE FOR LEADS — hard rule (2026-11-01 reflection):
+  Gate What happened LEADS on a primary link: no item without a
+  primary link may lead What happened, be a top-5 lead, or anchor
+  Why it matters. Single-source no-primary items are Watch only.
+  A multi-outlet or versioned no-primary item may keep a later
+  What-happened line tagged [no primary link] under the
+  IMPORTANCE-VS-VERIFIABILITY SPLIT above, but only if it can
+  support a Why it matters / Connections / Where this points
+  thesis — if it would only be listed and then orphaned, demote
+  it to Missed / watch as "Watch [id] — need primary URL:
+  <reason>" instead. Dated shutdown / deprecation items claimed
+  only in secondary sources likewise stay in Watch until primary
+  docs are found, listed prominently there, never as a firm lead.
 - LIVE-LINK PROOF FOR ANNOUNCED-LIVE — hard rule (2026-10-29 reflection):
   Tag [announced-live] ONLY when the item itself links to a live-proof
   artifact: a marketplace / plugin / connector listing, a public weights
