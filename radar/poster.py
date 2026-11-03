@@ -42,7 +42,9 @@ def api(payload: dict) -> dict:
         [f"{BIN}/model-api-call", "POST", "/chat/completions", "@/tmp/radar_poster.json"],
         capture_output=True, text=True, timeout=180)
     if r.returncode != 0:
-        raise SystemExit(f"poster text call failed: {r.stderr.strip()}")
+        # RuntimeError for the same reason as screenshot(): callers
+        # expect a raise they can fall back from, not a SystemExit.
+        raise RuntimeError(f"poster text call failed: {r.stderr.strip()}")
     return json.loads(r.stdout)
 
 
@@ -210,7 +212,11 @@ def screenshot(html_path: str, out_path: str) -> None:
         ["node", SHOT, html_path, out_path, "1536", "1024"],
         capture_output=True, text=True, timeout=120)
     if r.returncode != 0 or not os.path.exists(out_path):
-        raise SystemExit(f"screenshot failed: {r.stderr.strip()[-500:]}")
+        # RuntimeError, not SystemExit: SystemExit bypasses the
+        # `except Exception` fallback in make_digest_poster, so a dead
+        # screenshot path used to kill the poster entirely instead of
+        # falling back to the image model (Oct 29 – Nov 3, 2026).
+        raise RuntimeError(f"screenshot failed: {r.stderr.strip()[-500:]}")
 
 
 def legacy_image_poster(markdown: str, out: str) -> None:
