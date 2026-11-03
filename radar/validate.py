@@ -109,6 +109,28 @@ def check_digest(markdown: str, expected_ids=None) -> list[str]:
                     "include it or list it as Rejected / Watch in Missed / watch"
                 )
 
+    # 5. Lead / claimed-live primary gate (2026-11-02 reflection):
+    #    never headline a [no primary link] item, and a claimed-live
+    #    [announced-live] line must not also admit it has no primary link.
+    if what_happened:
+        bullets = [ln for ln in what_happened.splitlines()
+                   if ln.lstrip().startswith("- ")]
+        if bullets and re.search(r"\[no primary link\]", bullets[0], re.IGNORECASE):
+            problems.append(
+                "lead gate: first What happened bullet is tagged "
+                "[no primary link] — never headline a no-primary item; "
+                "demote it to Watch"
+            )
+        for ln in bullets:
+            if (re.search(r"\[announced-live\]", ln, re.IGNORECASE)
+                    and re.search(r"\[no primary link\]", ln, re.IGNORECASE)):
+                problems.append(
+                    "claimed-live gate: [announced-live] line also tagged "
+                    f"[no primary link]: {ln.strip()[:120]} — claimed-live "
+                    "requires a primary URL / live-proof artifact, "
+                    "otherwise demote to Watch"
+                )
+
     return sorted(set(problems))
 
 

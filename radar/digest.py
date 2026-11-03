@@ -223,6 +223,22 @@ CLAIM TYPING + FRESHNESS — hard rule:
   claim to live while demoting another's better-documented launch to
   watch on the same evidence level. A weights release alone is not
   "open weights" without a repo / license link in the item itself.
+- CLAIMED-LIVE STATUS FIDELITY + PRIMARY-URL DEMOTION — hard rule
+  (2026-11-02 reflection): Take the live/coming tag from the item's
+  own wording, not from caution. Wording such as "available now",
+  "rolled out", "public beta", "weights posted / released", or
+  "usable today" is CLAIMED-LIVE: never relabel such an item
+  [announced-coming] to keep it publishable. [announced-coming] is
+  only for items whose own text says future, waitlist, preview-only
+  (not usable), or a progressive rollout not yet available to the
+  reader. A claimed-live item may carry [announced-live] in
+  What happened ONLY when its own item links to a primary URL /
+  live-proof artifact (see LIVE-LINK PROOF above); otherwise
+  auto-demote it to Missed / watch as "Watch [id] — need primary
+  URL / live-link proof: claimed live in source wording but no
+  primary artifact in item". Never headline a [no primary link]
+  item: no [no primary link] line may be the lead / first bullet
+  of What happened.
 - SAFETY CO-SURFACING — hard rule (2026-10-28 reflection):
   Permission-bypass changelogs (flags/modes that skip permissions or
   remove safeguards such as rm brakes) and agent oversight failures
