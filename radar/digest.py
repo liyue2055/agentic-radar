@@ -239,6 +239,25 @@ CLAIM TYPING + FRESHNESS — hard rule:
   primary artifact in item". Never headline a [no primary link]
   item: no [no primary link] line may be the lead / first bullet
   of What happened.
+- MULTI-ENDPOINT WEIGHT-DROP EXCEPTION + LIVE-LINK FETCH — hard rule
+  (2026-11-03 reflection): The auto-demotion above does NOT apply to a
+  claimed-live open-weight release that secondary sources report as
+  live on two or more independent endpoints (e.g. a Hugging Face repo,
+  the vendor's Studio / API, OpenRouter, a model catalog). Such an
+  item was buried in Watch on 2026-11-03 (Mistral Large 4) — a
+  lead-story miss. Instead: keep it in What happened as a NON-lead
+  line tagged [no primary link] [links pending], ranked by builder
+  actionability; it still may NOT lead, enter the top 5, anchor
+  Why it matters, or carry [announced-live] until a primary artifact
+  is fetched (the PRIMARY-LINK GATE and validator still apply), and
+  its model-ID / count claims stay under the primary-artifact gate.
+  Single-source claimed-live items still auto-demote as above.
+  Mandatory fetch step: for every such item, name in Missed / watch
+  the exact primary artifacts to fetch next — the HF repo and its
+  license, the vendor announcement page, and the OpenRouter / API
+  docs listing — as "Fetch [id] — primary artifacts pending:
+  <artifacts>", so the link is pulled instead of the story being
+  dropped for its absence.
 - SAFETY CO-SURFACING — hard rule (2026-10-28 reflection):
   Permission-bypass changelogs (flags/modes that skip permissions or
   remove safeguards such as rm brakes) and agent oversight failures
