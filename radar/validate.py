@@ -87,7 +87,9 @@ def check_digest(markdown: str, expected_ids=None) -> list[str]:
         for name, body in sections.items():
             # Missed / watch is the rejection log (recall gate): ids listed
             # there as Rejected are accounted for, not orphan citations.
-            if name in ("What happened", "Missed / watch"):
+            # Watch appendix (2026-11-04 reflection) holds the overflow
+            # beyond the top-3 Watch cap and is likewise a rejection log.
+            if name in ("What happened", "Missed / watch", "Watch appendix"):
                 continue
             for cited in set(ID_RE.findall(body)):
                 if cited not in introduced:

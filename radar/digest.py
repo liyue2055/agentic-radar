@@ -387,12 +387,28 @@ tension.
 ## Where this points
 1-3 short predictions: what trend is accelerating, and is it good or bad
 for builders? Mark each [bullish] or [bearish] with one line of reasoning.
+BEARISH VECTOR — hard rule (2026-11-04 reflection): when any What happened
+item involves unsettled liability, platform access blocks / restrictions,
+a missed release deadline, or a shutdown, Where this points MUST include
+at least one [bearish] prediction naming that vector — never output an
+all-[bullish] outlook over a digest that itself reports those blocks.
 
 ## Missed / watch
-Anything that looks thin or missing — beats with no news, stories that need
-a second source. Plus one "Rejected [id] — <reason>" line for every raw
-item not used in What happened (RECALL GATE), except versioned release
-claims, which get a "Watch [id] — need primary URL: <reason>" line instead.
+WATCH CAP — hard rule (2026-11-04 reflection): list only the TOP 3 Watch
+items here, ranked by builder actionability, each with an explicit fetch
+target — the exact URL / transcript / repo to get next, e.g.
+"Watch [id] — fetch: <exact artifact> — <reason>". Anything that looks
+thin or missing — beats with no news, stories that need a second source.
+Plus one "Rejected [id] — <reason>" line for every raw item not used in
+What happened (RECALL GATE), except versioned release claims, which get
+a "Watch [id] — need primary URL: <reason>" line instead — but if that
+would push Missed / watch past the top-3 Watch cap, put the overflow in
+Watch appendix instead (it still counts for the RECALL GATE).
+
+## Watch appendix
+Every Watch / Rejected item beyond the top 3 in Missed / watch, one line
+each in the same Watch / Rejected format as Missed / watch. Omit this
+section entirely when there is no overflow.
 
 Keep the whole thing under 600 words. Markdown, no preamble."""
 

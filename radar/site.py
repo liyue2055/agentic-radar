@@ -129,7 +129,8 @@ def md_to_html(md: str) -> str:
                 out.append(f'<div class="conn">{rich_line(body)}</div>')
             elif section == "where this points":
                 out.append(f'<div class="point">{rich_line(body)}</div>')
-            elif section and section.startswith("missed"):
+            elif section and (section.startswith("missed")
+                              or section.startswith("watch appendix")):
                 out.append(f'<p class="watch">{rich_line(body)}</p>')
             else:
                 out.append(f"<p>{rich_line(body)}</p>")
