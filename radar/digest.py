@@ -258,6 +258,19 @@ CLAIM TYPING + FRESHNESS — hard rule:
   docs listing — as "Fetch [id] — primary artifacts pending:
   <artifacts>", so the link is pulled instead of the story being
   dropped for its absence.
+- TAG HYGIENE — DATED PRIMARY FOR ANNOUNCED-LIVE — hard rule
+  (2026-11-05 reflection): [announced-live] requires BOTH in its own
+  item: (1) a linked primary announcement / live-proof URL, AND
+  (2) a date on that announcement. If either is missing, do NOT use
+  [announced-live] — demote to Missed / watch as "Watch [id] — need
+  dated primary announcement: <reason>". Never tag [no primary link]
+  when the raw item itself links a primary source (vendor security
+  notice / changelog / docs) — propagate that link; a link dropped
+  in summarising is not missing evidence. Never invert status: if
+  the primary post is itself live and dated, tag its main claim by
+  its own status and tag only a preview sub-part (e.g. commitment
+  spend) [announced-coming] on its own line — do not tag the whole
+  item [announced-coming] because one sub-feature is preview.
 - SAFETY CO-SURFACING — hard rule (2026-10-28 reflection):
   Permission-bypass changelogs (flags/modes that skip permissions or
   remove safeguards such as rm brakes) and agent oversight failures

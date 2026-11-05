@@ -111,6 +111,22 @@ def check_digest(markdown: str, expected_ids=None) -> list[str]:
                     "include it or list it as Rejected / Watch in Missed / watch"
                 )
 
+    # 6. Tag hygiene — dated primary for announced-live (2026-11-05
+    #    reflection): an [announced-live] line tagged [no date] has no
+    #    dated primary announcement, so it cannot carry announced-live.
+    if what_happened:
+        bullets = [ln for ln in what_happened.splitlines()
+                   if ln.lstrip().startswith("- ")]
+        for ln in bullets:
+            if (re.search(r"\[announced-live\]", ln, re.IGNORECASE)
+                    and re.search(r"\[no date\]", ln, re.IGNORECASE)):
+                problems.append(
+                    "tag hygiene: [announced-live] line also tagged "
+                    f"[no date]: {ln.strip()[:120]} — announced-live "
+                    "requires a dated primary announcement, "
+                    "otherwise demote to Watch"
+                )
+
     # 5. Lead / claimed-live primary gate (2026-11-02 reflection):
     #    never headline a [no primary link] item, and a claimed-live
     #    [announced-live] line must not also admit it has no primary link.
