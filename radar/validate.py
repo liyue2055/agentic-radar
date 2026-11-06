@@ -130,10 +130,20 @@ def check_digest(markdown: str, expected_ids=None) -> list[str]:
     # 5. Lead / claimed-live primary gate (2026-11-02 reflection):
     #    never headline a [no primary link] item, and a claimed-live
     #    [announced-live] line must not also admit it has no primary link.
+    #    Exception (2026-11-06 reflection): a safety-critical lead —
+    #    a Preparedness / safety-framework Critical classification or
+    #    exploit-benchmark (e.g. ExploitGym) results in its own line —
+    #    may lead even if primary docs are pending; it still may not
+    #    carry [announced-live] without a primary link (checked below).
     if what_happened:
         bullets = [ln for ln in what_happened.splitlines()
                    if ln.lstrip().startswith("- ")]
-        if bullets and re.search(r"\[no primary link\]", bullets[0], re.IGNORECASE):
+        safety_critical = re.compile(
+            r"(preparedness.{0,40}critical|critical.{0,40}preparedness"
+            r"|exploitgym|cyber.{0,30}critical)",
+            re.IGNORECASE)
+        if (bullets and re.search(r"\[no primary link\]", bullets[0], re.IGNORECASE)
+                and not safety_critical.search(bullets[0])):
             problems.append(
                 "lead gate: first What happened bullet is tagged "
                 "[no primary link] — never headline a no-primary item; "

@@ -271,6 +271,25 @@ CLAIM TYPING + FRESHNESS — hard rule:
   its own status and tag only a preview sub-part (e.g. commitment
   spend) [announced-coming] on its own line — do not tag the whole
   item [announced-coming] because one sub-feature is preview.
+- SAFETY-CRITICAL PROMOTION EXCEPTION — hard rule
+  (2026-11-06 reflection): Enforce the primary-artifact gate for
+  GA / open-weights headlines — no GA or open-weights headline
+  without a live docs / Hugging Face / GitHub URL in its own item.
+  EXCEPTION: auto-promote a safety-critical item to a What-happened
+  lead and a biggest story in Why it matters EVEN IF its primary
+  docs are still pending, when its own item states (a) a
+  Preparedness / safety-framework Critical (highest) classification,
+  or (b) exploit-benchmark results (e.g. an ExploitGym percentage).
+  Such a lead keeps its caution tags — [no primary link]
+  [links pending] and [unverified] on its vendor numbers if no
+  primary artifact is linked — must NOT carry [announced-live],
+  must name its exact fetch target in Missed / watch, and its
+  numbers are not stated as firm fact. This exception is ONLY for
+  that safety classification / exploit evidence: it does NOT lift
+  the GA / open-weights gate, the CVE / model-ID / count gates, or
+  the announced-live gate for any other item. Rationale: on
+  2026-11-06 the GPT-6 Cyber Critical / ExploitGym story was buried
+  in Watch — the top agentic-risk story must not wait on docs.
 - SAFETY CO-SURFACING — hard rule (2026-10-28 reflection):
   Permission-bypass changelogs (flags/modes that skip permissions or
   remove safeguards such as rm brakes) and agent oversight failures
