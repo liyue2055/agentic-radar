@@ -181,6 +181,20 @@ CLAIM TYPING + FRESHNESS — hard rule:
   them, never put them in the top 5 ahead of an actionable item,
   and never make them a biggest story in Why it matters — keep
   them as a later What-happened line or in Missed / watch.
+- ACTIONABILITY AUTO-PROMOTION — hard rule (2026-11-07 reflection):
+  Rank by actionability first: any item stating a dated shutdown /
+  deprecation, a dated billing start / price change, or a
+  permission / egress change auto-promotes to What happened —
+  ahead of any single-source rumor, rumor-debunk / non-release,
+  or analyst take, which auto-demote to Missed / watch when they
+  are single-source. If the dated item is secondary-only, give it
+  a NON-lead What-happened line tagged [no primary link] with its
+  date, still barred from leading, carrying [announced-live], or
+  anchoring Why it matters until a primary artifact is fetched,
+  and name its exact fetch target in Missed / watch. This
+  supersedes the PRIMARY-LINK GATE clause that kept secondary-only
+  dated shutdowns in Watch alone (2026-11-07 buried the Dec 11
+  GPT shutdown, the Nov 18 billing start, and the Dec 3 reroute).
 - IMPORTANCE-VS-VERIFIABILITY SPLIT — hard rule (2026-10-31 reflection):
   Split verifiability from importance: lack of a primary URL alone does
   NOT demote an item to Missed / watch if it is (a) reported by at least
@@ -209,7 +223,10 @@ CLAIM TYPING + FRESHNESS — hard rule:
   it to Missed / watch as "Watch [id] — need primary URL:
   <reason>" instead. Dated shutdown / deprecation items claimed
   only in secondary sources likewise stay in Watch until primary
-  docs are found, listed prominently there, never as a firm lead.
+  docs are found, listed prominently there, never as a firm lead
+  — except under ACTIONABILITY AUTO-PROMOTION (2026-11-07),
+  where they get a non-lead [no primary link] What-happened line
+  plus a Watch fetch target, still never as a firm lead.
 - LIVE-LINK PROOF FOR ANNOUNCED-LIVE — hard rule (2026-10-29 reflection):
   Tag [announced-live] ONLY when the item itself links to a live-proof
   artifact: a marketplace / plugin / connector listing, a public weights
