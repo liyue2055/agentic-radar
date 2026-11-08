@@ -37,6 +37,47 @@ LEAK_PATTERNS = [
 
 ID_RE = re.compile(r"\[(\d{2,4})\]")
 NO_DATE_RE = re.compile(r"\[no date\]", re.IGNORECASE)
+NO_PRIMARY_RE = re.compile(r"\[no primary link\]", re.IGNORECASE)
+
+# Hosts that ARE a primary source when they are an item's own URL
+# (2026-11-08 reflection): an official changelog / docs / engineering
+# blog / repo on one of these is the primary artifact itself, so a
+# line citing that item must never be tagged [no primary link].
+PRIMARY_HOSTS = (
+    "github.blog", "github.com", "huggingface.co",
+    "developers.openai.com", "openai.com", "platform.openai.com",
+    "anthropic.com", "claude.com", "support.claude.com",
+    "docs.cloud.google.com", "cloud.google.com", "ai.google.dev",
+    "developers.google.com", "blog.google", "research.google.com",
+    "mistral.ai", "ai.meta.com", "engineering.fb.com",
+    "learn.microsoft.com", "azure.microsoft.com", "microsoft.com",
+)
+
+# Phrases in a raw summary that cite a primary source even when the
+# item's own URL is a secondary report of it, e.g. [793] "Google Jules
+# Turndown notice Oct 29" or [802] "rebuilt from Mistral's own
+# deprecation page" (both falsely tagged [no primary link] on
+# 2026-11-08).
+PRIMARY_CITATION_RE = re.compile(
+    r"(turndown|shutdown|deprecation|sunset)\s+notice"
+    r"|\bown\s+(deprecation|shutdown|changelog|docs|documentation|release\s+notes)"
+    r"|deprecation\s+page"
+    r"|engineering\s+blog"
+    r"|official\s+(changelog|release\s+notes|docs|documentation|blog|notice|announcement)",
+    re.IGNORECASE)
+
+
+def _raw_cites_primary(item) -> bool:
+    """True when a raw item itself carries / cites a primary source."""
+    if not item:
+        return False
+    url = (item.get("url") or "").lower()
+    host = re.sub(r"^https?://", "", url).split("/")[0].split(":")[0]
+    if host in PRIMARY_HOSTS or any(
+            host == h or host.endswith("." + h) for h in PRIMARY_HOSTS):
+        return True
+    text = f"{item.get('title') or ''} {item.get('summary') or ''}"
+    return bool(PRIMARY_CITATION_RE.search(text))
 
 
 def _sections(markdown: str) -> dict[str, str]:
@@ -53,11 +94,14 @@ def _sections(markdown: str) -> dict[str, str]:
     return {k: "\n".join(v) for k, v in sections.items()}
 
 
-def check_digest(markdown: str, expected_ids=None) -> list[str]:
+def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
     """Return a list of blocking problems; empty means the digest is clean.
 
     expected_ids: raw item ids collected for the day. When given, every
     one must appear somewhere in the digest (recall gate).
+    items: raw item dicts for the day. When given, the primary-URL
+    propagation gate (section 7) can check [no primary link] tags
+    against what the raw items actually cite.
     """
     problems: list[str] = []
 
@@ -159,6 +203,29 @@ def check_digest(markdown: str, expected_ids=None) -> list[str]:
                     "otherwise demote to Watch"
                 )
 
+    # 7. Primary-URL propagation (2026-11-08 reflection): if a raw item
+    #    itself carries or cites a primary source, its line must not be
+    #    tagged [no primary link] — that tag would falsely claim the
+    #    source is missing when the pipeline merely dropped the URL in
+    #    summarising ([793] Jules turndown notice, [802] Mistral's own
+    #    deprecation page). Bounce the digest back instead of
+    #    publishing the false missing-source flag: propagate the
+    #    primary URL, or send the item to the fetch queue.
+    if items:
+        by_id = {str(it["id"]): it for it in items}
+        for line in markdown.splitlines():
+            if not NO_PRIMARY_RE.search(line):
+                continue
+            for cited in ID_RE.findall(line):
+                if _raw_cites_primary(by_id.get(cited)):
+                    problems.append(
+                        f"primary-url propagation: [{cited}] tagged "
+                        "[no primary link] but its raw item cites a "
+                        "primary source — propagate that primary URL "
+                        "instead of publishing a false missing-source "
+                        f"flag: {line.strip()[:120]}"
+                    )
+
     return sorted(set(problems))
 
 
@@ -171,14 +238,16 @@ if __name__ == "__main__":
     with open(f"../digests/{day}.md") as fh:
         text = fh.read()
     expected_ids = None
+    items = None
     try:
         import os
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         import db
-        expected_ids = [str(it["id"]) for it in db.items_on(day)]
+        items = db.items_on(day)
+        expected_ids = [str(it["id"]) for it in items]
     except Exception:
         pass
-    problems = check_digest(text, expected_ids=expected_ids)
+    problems = check_digest(text, expected_ids=expected_ids, items=items)
     if problems:
         print("VALIDATION FAILED:")
         for p in problems:

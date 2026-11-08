@@ -288,6 +288,20 @@ CLAIM TYPING + FRESHNESS — hard rule:
   its own status and tag only a preview sub-part (e.g. commitment
   spend) [announced-coming] on its own line — do not tag the whole
   item [announced-coming] because one sub-feature is preview.
+- PRIMARY-URL PROPAGATION — hard rule (2026-11-08 reflection):
+  Require the primary URL to propagate raw -> digest. If a raw item's
+  own URL is a primary source (official changelog / docs / engineering
+  blog / repo, e.g. github.blog, developers.openai.com,
+  docs.cloud.google.com, support.claude.com), or its summary names a
+  primary source (a vendor turndown / shutdown / deprecation notice,
+  the vendor's own deprecation page, an official release-notes page),
+  NEVER tag that item [no primary link] — the source is not missing,
+  it was dropped in summarising. Propagate the primary instead, with
+  its own tag status; a false [no primary link] tag fails
+  pre-publish validation and bounces the item back to the fetch
+  queue. Example misses on 2026-11-08: [793] Jules (Turndown notice
+  Oct 29 exists) and [802] Mistral (built from Mistral's own
+  deprecation page), both published as [no primary link].
 - SAFETY-CRITICAL PROMOTION EXCEPTION — hard rule
   (2026-11-06 reflection): Enforce the primary-artifact gate for
   GA / open-weights headlines — no GA or open-weights headline
@@ -494,8 +508,10 @@ def main() -> None:
     import datetime
     day = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
     markdown = build_digest(day)
-    expected_ids = [str(it["id"]) for it in db.items_on(day)]
-    problems = validate.check_digest(markdown, expected_ids=expected_ids)
+    items = db.items_on(day)
+    expected_ids = [str(it["id"]) for it in items]
+    problems = validate.check_digest(markdown, expected_ids=expected_ids,
+                                     items=items)
     if problems:
         print(f"digest failed pre-publish validation for {day}:", file=sys.stderr)
         for p in problems:
