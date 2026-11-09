@@ -203,6 +203,38 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "otherwise demote to Watch"
                 )
 
+    # 8. Retirement / cutoff / billing primary-or-demote
+    #    (2026-11-09 reflection): a single-source, no-primary item
+    #    claiming a retirement, deprecation, shutdown, access cutoff,
+    #    reroute, or billing / allowance / pricing change must not
+    #    appear in What happened at all — demote it to Watch until a
+    #    changelog / docs / help page is fetched. Multi-outlet
+    #    secondary-only items keep the 2026-11-07 auto-promotion
+    #    non-lead line, so this gate requires BOTH tags.
+    if what_happened:
+        category_re = re.compile(
+            r"(retir|deprecat|shutdown|sunset|cutoff|cut-off"
+            r"|reroute|re-route|billing|allowance|price change"
+            r"|pricing change|loses .{0,30}access"
+            r"|fails after|closed to new users)",
+            re.IGNORECASE)
+        safety_critical = re.compile(
+            r"(preparedness.{0,40}critical|critical.{0,40}preparedness"
+            r"|exploitgym|cyber.{0,30}critical)",
+            re.IGNORECASE)
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if (re.search(r"\[single source\]", ln, re.IGNORECASE)
+                    and re.search(r"\[no primary link\]", ln, re.IGNORECASE)
+                    and category_re.search(ln)
+                    and not safety_critical.search(ln)):
+                problems.append(
+                    "primary-or-demote: single-source no-primary "
+                    f"retirement / cutoff / billing line in What "
+                    f"happened: {ln.strip()[:120]} — demote to Watch "
+                    "until a linked changelog / docs page is fetched"
+                )
+
     # 7. Primary-URL propagation (2026-11-08 reflection): if a raw item
     #    itself carries or cites a primary source, its line must not be
     #    tagged [no primary link] — that tag would falsely claim the

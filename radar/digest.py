@@ -227,6 +227,22 @@ CLAIM TYPING + FRESHNESS — hard rule:
   — except under ACTIONABILITY AUTO-PROMOTION (2026-11-07),
   where they get a non-lead [no primary link] What-happened line
   plus a Watch fetch target, still never as a firm lead.
+- RETIREMENT / CUTOFF / BILLING PRIMARY-OR-DEMOTE — hard rule
+  (2026-11-09 reflection): Enforce primary-or-demote for
+  single-source retirement / cutoff / billing changes: no
+  single-source item claiming a model retirement, deprecation,
+  shutdown, access cutoff, reroute, or a billing / allowance /
+  pricing change may appear in What happened at all — lead or
+  non-lead — without a linked changelog, docs, or help page in
+  its own item. Demote it to Missed / watch as "Watch [id] —
+  need primary URL: fetch <vendor changelog / docs / help page>"
+  until that primary is fetched. This narrows ACTIONABILITY
+  AUTO-PROMOTION (2026-11-07) for single-source items in these
+  categories only: multi-outlet secondary-only dated items may
+  still get the non-lead [no primary link] line that rule allows.
+  Rationale: on 2026-11-09 four of six What-happened lines
+  ([818] [806] [808] [807]) were single-source no-primary
+  retirement / cutoff / billing claims presented as firm leads.
 - LIVE-LINK PROOF FOR ANNOUNCED-LIVE — hard rule (2026-10-29 reflection):
   Tag [announced-live] ONLY when the item itself links to a live-proof
   artifact: a marketplace / plugin / connector listing, a public weights
