@@ -291,6 +291,25 @@ CLAIM TYPING + FRESHNESS — hard rule:
   docs listing — as "Fetch [id] — primary artifacts pending:
   <artifacts>", so the link is pulled instead of the story being
   dropped for its absence.
+- MODEL / WEIGHT LAUNCH GATE — hard rule (2026-11-10 reflection):
+  Gate What happened for model / weight launches: no model launch or
+  weight drop may appear in What happened — lead or non-lead — unless
+  its own item carries BOTH (1) a dated primary URL (a vendor
+  announcement / docs / changelog page that is itself dated) AND
+  (2) an artifact link: a Hugging Face / GitHub repo with weights
+  and license, a weights-file hash, or a live callable catalog
+  listing (e.g. an OpenRouter / Model Garden listing with pricing —
+  callable + priced counts as an artifact). Everything else stays in
+  Missed / watch as "Watch [id] — need dated primary + artifact:
+  fetch <HF repo + license / vendor post / catalog listing>".
+  This SUPERSEDES the MULTI-ENDPOINT WEIGHT-DROP EXCEPTION
+  (2026-11-03) for model / weight launches: being reported live on
+  two or more secondary endpoints no longer keeps a weight drop in
+  What happened tagged [links pending] — on 2026-11-10 two such
+  rumour lines (Mistral Large 4 weights, Kimi K3.1-Pro weights) sat
+  in What happened with no HF repo / license primary at all.
+  The SAFETY-CRITICAL PROMOTION EXCEPTION is unaffected: it never
+  lifted the GA / open-weights gate in the first place.
 - TAG HYGIENE — DATED PRIMARY FOR ANNOUNCED-LIVE — hard rule
   (2026-11-05 reflection): [announced-live] requires BOTH in its own
   item: (1) a linked primary announcement / live-proof URL, AND

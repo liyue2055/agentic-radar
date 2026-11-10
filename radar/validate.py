@@ -235,6 +235,37 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "until a linked changelog / docs page is fetched"
                 )
 
+    # 9. Model / weight launch primary gate (2026-11-10 reflection):
+    #    a What happened bullet tagged [no primary link] that reports
+    #    a weight drop / Hugging Face weights / open weights has
+    #    neither a dated primary URL nor an artifact link (repo +
+    #    license / weights hash / live catalog listing), so it must
+    #    not appear in What happened at all — demote it to Watch
+    #    until that primary + artifact is fetched. This supersedes
+    #    the 2026-11-03 multi-endpoint exception for weight drops:
+    #    on 2026-11-10 two such [links pending] rumour lines sat in
+    #    What happened with no HF repo / license primary.
+    if what_happened:
+        weight_re = re.compile(
+            r"(weights?|hugging\s*face|open[-\s]weights?)",
+            re.IGNORECASE)
+        safety_critical_9 = re.compile(
+            r"(preparedness.{0,40}critical|critical.{0,40}preparedness"
+            r"|exploitgym|cyber.{0,30}critical)",
+            re.IGNORECASE)
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if (NO_PRIMARY_RE.search(ln)
+                    and weight_re.search(ln)
+                    and not safety_critical_9.search(ln)):
+                problems.append(
+                    "model/weight gate: no-primary weight-launch "
+                    f"line in What happened: {ln.strip()[:120]} — "
+                    "model/weight launches require a dated primary "
+                    "URL + artifact link; demote to Watch until "
+                    "fetched"
+                )
+
     # 7. Primary-URL propagation (2026-11-08 reflection): if a raw item
     #    itself carries or cites a primary source, its line must not be
     #    tagged [no primary link] — that tag would falsely claim the
