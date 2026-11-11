@@ -310,6 +310,23 @@ CLAIM TYPING + FRESHNESS — hard rule:
   in What happened with no HF repo / license primary at all.
   The SAFETY-CRITICAL PROMOTION EXCEPTION is unaffected: it never
   lifted the GA / open-weights gate in the first place.
+- USER-IMPACT RANKING — hard rule (2026-11-11 reflection):
+  Among items that PASS the existing gates, rank by user impact
+  first, NOT by artifact completeness: (1) a new model GA or an
+  open-weights release with its artifact, (2) a launch reaching a
+  distribution surface of ~1B+ users / weekly reach, and (3) a
+  GA product / API with dated pricing all outrank CLI point /
+  patch releases and permission / config hardening notes, however
+  perfectly sourced those notes are. Artifact completeness is a
+  confidence flag and a tie-break among impact peers, not the
+  ranking axis. This does NOT lift any gate: a high-impact launch
+  that fails the MODEL / WEIGHT LAUNCH GATE or the primary-link
+  gate still may not enter What happened — instead place it FIRST
+  in Missed / watch as "Fetch [id] — high-impact pending:
+  <exact artifact to fetch>", ahead of ordinary Watch items, so
+  it is fetched first rather than buried in Watch bloat behind
+  minor releases (2026-11-11 buried Carbon GA, a 1T open-weights
+  drop, an Ember launch, and a 1.2B-reach hub under CLI patches).
 - TAG HYGIENE — DATED PRIMARY FOR ANNOUNCED-LIVE — hard rule
   (2026-11-05 reflection): [announced-live] requires BOTH in its own
   item: (1) a linked primary announcement / live-proof URL, AND
