@@ -315,9 +315,16 @@ CLAIM TYPING + FRESHNESS — hard rule:
   first, NOT by artifact completeness: (1) a new model GA or an
   open-weights release with its artifact, (2) a launch reaching a
   distribution surface of ~1B+ users / weekly reach, and (3) a
-  GA product / API with dated pricing all outrank CLI point /
+  GA product / API with dated pricing, and (4) a policy / terms /
+  regions change effective today or tomorrow, all outrank CLI point /
   patch releases and permission / config hardening notes, however
-  perfectly sourced those notes are. Artifact completeness is a
+  perfectly sourced those notes are. A single-flag CLI point patch
+  (e.g. x.x.321 -> .322) is the lowest-rank passing item and must
+  never be presented as the day's main story when a gate-passing
+  policy-effective-today item exists; if no such item passes, put
+  any effective-today policy item FIRST in Missed / watch as a
+  Fetch target (2026-11-12 buried Usage + Regions policies
+  effective Nov 12 in the Watch appendix). Artifact completeness is a
   confidence flag and a tie-break among impact peers, not the
   ranking axis. This does NOT lift any gate: a high-impact launch
   that fails the MODEL / WEIGHT LAUNCH GATE or the primary-link
