@@ -51,6 +51,10 @@ PRIMARY_HOSTS = (
     "developers.google.com", "blog.google", "research.google.com",
     "mistral.ai", "ai.meta.com", "engineering.fb.com",
     "learn.microsoft.com", "azure.microsoft.com", "microsoft.com",
+    # 2026-11-13 reflection: AWS What's New / Bedrock, Meta developer
+    # docs, and AI Studio are primary surfaces too — [908] was falsely
+    # called no-primary despite its AWS What's New + Bedrock card.
+    "aws.amazon.com", "developers.meta.com", "aistudio.google.com",
 )
 
 # Phrases in a raw summary that cite a primary source even when the
@@ -63,7 +67,21 @@ PRIMARY_CITATION_RE = re.compile(
     r"|\bown\s+(deprecation|shutdown|changelog|docs|documentation|release\s+notes)"
     r"|deprecation\s+page"
     r"|engineering\s+blog"
-    r"|official\s+(changelog|release\s+notes|docs|documentation|blog|notice|announcement)",
+    r"|official\s+(changelog|release\s+notes|docs|documentation|blog|notice|announcement)"
+    # 2026-11-13 reflection: a summary naming an official GitHub
+    # release, an AWS What's New post, a Bedrock model card, or
+    # Hugging Face model files / repo cites a primary source even
+    # when the item URL is a secondary report — [903] GitHub release
+    # v2.1.323, [908] AWS What's New + Bedrock card, and [911]
+    # Mistral announcement + HF files were all falsely rejected as
+    # "no primary".
+    r"|github\s+release"
+    r"|aws\s+what'?s\s+new"
+    r"|bedrock\s+(model\s+)?card"
+    r"|model\s+card"
+    r"|hugging\s*face\s+(repo|files|model\s+files)"
+    r"|model\s+files\s+on\s+hugging\s*face"
+    r"|official\s+release\s+notes\s+on\s+github",
     re.IGNORECASE)
 
 

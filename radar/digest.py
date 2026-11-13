@@ -334,6 +334,26 @@ CLAIM TYPING + FRESHNESS — hard rule:
   it is fetched first rather than buried in Watch bloat behind
   minor releases (2026-11-11 buried Carbon GA, a 1T open-weights
   drop, an Ember launch, and a 1.2B-reach hub under CLI patches).
+- PRIMARY-SOURCE DETECTION FIX + GA / VENDOR CAP — hard rule
+  (2026-11-13 reflection): Treat as PRIMARY any of these named in an
+  item's own summary, even when the item URL is a secondary report:
+  an official blog post, official changelog, GitHub release, AWS
+  What's New announcement, Bedrock model card, official docs / model
+  card, or Hugging Face repo / model files. Never Reject or tag
+  [no primary link] an item whose summary names one of those — on
+  2026-11-13 [911] (Mistral announcement Oct 29 + HF files), [903]
+  (GitHub release v2.1.323), and [908] (AWS What's New + Bedrock
+  card) were all falsely rejected as "no primary". A GA launch with
+  dated pricing whose item names such a primary (e.g. [895]
+  Hydrogen on blog.google, dated Nov 12, $1.50/$7.50, GA across the
+  API / AI Studio) is a lead story, not a fetch: its dated primary
+  plus a live callable + priced surface satisfies the MODEL /
+  WEIGHT LAUNCH GATE's artifact clause — do not bury it as "needs
+  artifact". VENDOR CAP: at most ONE bullet per vendor among the
+  first five What-happened bullets; additional same-vendor releases
+  (2026-11-13 had 3 of 5 bullets on Codex) come only after every
+  other vendor's gate-passing GA / effective-today item, or move
+  to Missed / watch when the word cap forces a cut.
 - TAG HYGIENE — DATED PRIMARY FOR ANNOUNCED-LIVE — hard rule
   (2026-11-05 reflection): [announced-live] requires BOTH in its own
   item: (1) a linked primary announcement / live-proof URL, AND
