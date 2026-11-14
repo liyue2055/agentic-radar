@@ -85,6 +85,31 @@ PRIMARY_CITATION_RE = re.compile(
     re.IGNORECASE)
 
 
+PRICE_RE = re.compile(r"\$\d")
+# A price is primary-doc pricing when the raw item itself names a
+# primary source for it (2026-11-14 reflection): an explicit
+# "(primary ...)" citation, a primary source named in the summary,
+# or an official blog / docs surface. Scoped to the pricing check
+# only — it does not widen _raw_cites_primary for other gates.
+PRIMARY_PRICING_RE = re.compile(
+    r"\(primary\b"
+    r"|primary[^.\n]{0,60}\bnamed\b"
+    r"|official\s+(blog|docs|documentation)"
+    r"|blog\.google"
+    r"|meta\s+model\s+api\s+documentation",
+    re.IGNORECASE)
+
+
+def _is_primary_pricing(item) -> bool:
+    """True when a raw item's $ pricing comes from a primary doc."""
+    if not item:
+        return False
+    text = f"{item.get('title') or ''} {item.get('summary') or ''}"
+    if not PRICE_RE.search(text):
+        return False
+    return bool(_raw_cites_primary(item) or PRIMARY_PRICING_RE.search(text))
+
+
 def _raw_cites_primary(item) -> bool:
     """True when a raw item itself carries / cites a primary source."""
     if not item:
@@ -306,6 +331,56 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                         "instead of publishing a false missing-source "
                         f"flag: {line.strip()[:120]}"
                     )
+
+    # 10. Unverified-on-primary-pricing (2026-11-14 reflection):
+    #     [unverified] is only for non-primary numbers, never for
+    #     primary-doc pricing. On 2026-11-14 Hydrogen $1.50/$7.50
+    #     (blog.google) and Ember $0.10/$0.50 (Meta docs) were both
+    #     mis-tagged [unverified]; the unverified numbers were an
+    #     AA index and a user count, not the prices.
+    if items and what_happened:
+        by_id_10 = {str(it["id"]): it for it in items}
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not (PRICE_RE.search(ln)
+                    and re.search(r"\[unverified\]", ln, re.IGNORECASE)):
+                continue
+            for cited in ID_RE.findall(ln):
+                if _is_primary_pricing(by_id_10.get(cited)):
+                    problems.append(
+                        "unverified-on-primary-pricing: "
+                        f"[{cited}] tagged [unverified] on a line "
+                        f"with primary-doc pricing: {ln.strip()[:120]} "
+                        "— print primary-doc pricing bare; tag only "
+                        "a genuinely non-primary number"
+                    )
+
+    # 11. Security / permission release promotion (2026-11-14
+    #     reflection): a primary versioned release carrying a
+    #     security fix or a permission-default change must appear
+    #     in What happened, not be buried in Watch / Rejected.
+    #     On 2026-11-14 [913] (zstd security fix + sandboxed-Bash
+    #     permission flip) and [914] (exec --trust default-off in
+    #     untrusted dirs) were both left in Watch.
+    if items:
+        introduced_11 = set(ID_RE.findall(what_happened)) if what_happened else set()
+        version_re = re.compile(r"\bv?\d+\.\d+\.\d+\b")
+        sec_perm_re = re.compile(
+            r"(security|permission|--trust|untrusted|sandbox)",
+            re.IGNORECASE)
+        for it in items:
+            text_11 = f"{it.get('title') or ''} {it.get('summary') or ''}"
+            if not (_raw_cites_primary(it) and version_re.search(text_11)
+                    and sec_perm_re.search(text_11)):
+                continue
+            if str(it["id"]) not in introduced_11:
+                problems.append(
+                    "security/permission release gate: primary "
+                    f"versioned release [{it['id']}] with a security "
+                    "or permission-default change is not in What "
+                    "happened — auto-promote it instead of burying "
+                    "it in Watch"
+                )
 
     return sorted(set(problems))
 

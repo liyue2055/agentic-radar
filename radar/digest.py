@@ -354,6 +354,23 @@ CLAIM TYPING + FRESHNESS — hard rule:
   (2026-11-13 had 3 of 5 bullets on Codex) come only after every
   other vendor's gate-passing GA / effective-today item, or move
   to Missed / watch when the word cap forces a cut.
+- PRIMARY PRICING + SECURITY/PERMISSION RELEASE PROMOTION — hard
+  rule (2026-11-14 reflection): (1) Fix the verifier: [unverified]
+  only for non-primary numbers, never for primary-doc pricing —
+  a price taken from the item's own primary blog / docs / changelog
+  (e.g. Hydrogen $1.50/$7.50 on blog.google, Ember $0.10/$0.50 in
+  Meta docs) prints bare; tag only the genuinely non-primary
+  number on that story (benchmark index, user count, traffic
+  multiple) if one is retained. (2) Auto-promote any primary
+  versioned release carrying a security fix or a permission-default
+  change to What happened — at least a non-lead line, ahead of
+  ordinary Watch items — even when it is a CLI point patch. This
+  narrows USER-IMPACT RANKING for this subset only: a point patch
+  with no security/permission-default change stays lowest-rank,
+  but one with such a change (e.g. [913] zstd security fix +
+  sandboxed-Bash permission flip, [914] exec `--trust` default-off
+  in untrusted dirs, both buried in Watch on 2026-11-14) is a
+  shippable break builders must flip config for, not Watch filler.
 - TAG HYGIENE — DATED PRIMARY FOR ANNOUNCED-LIVE — hard rule
   (2026-11-05 reflection): [announced-live] requires BOTH in its own
   item: (1) a linked primary announcement / live-proof URL, AND
@@ -410,11 +427,19 @@ CLAIM TYPING + FRESHNESS — hard rule:
   safety story. If the bypass item lacks a primary source, keep that
   pairing explicitly Watch-flagged / [single source], not firm fact —
   flag it, do not silently separate it.
-- Vendor numbers (benchmarks, scores, caps, pricing, traffic multiples)
+- Vendor numbers (benchmarks, scores, caps, traffic multiples)
   require a second independent source to print bare. Otherwise label them
   [unverified] inline, e.g. "72.4% [unverified]". One tag per line: use
   [single source] when the whole story lacks corroboration, [unverified]
   when only the vendor numbers do — never both.
+  PRICING EXCEPTION (2026-11-14 reflection): pricing stated in a
+  primary doc / blog / docs page in the item itself is NOT a
+  non-primary vendor number — print primary-doc pricing bare, never
+  [unverified]. [unverified] is only for non-primary numbers (e.g.
+  a benchmark index or a user count reported second-hand). On
+  2026-11-14 Hydrogen $1.50/$7.50 (blog.google) and Ember
+  $0.10/$0.50 (Meta docs) were both mis-tagged [unverified]; the
+  unverified numbers that day were an AA index and a user count.
 - "Frontier" gate: do NOT call a model/product "frontier" unless its item
   cites benchmarks/evals or an independent second source corroborates the
   claim. Otherwise downgrade the wording to "vendor-claimed frontier" —
