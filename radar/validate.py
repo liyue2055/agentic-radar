@@ -382,6 +382,39 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "it in Watch"
                 )
 
+    # 12. Single-source lead loophole (2026-11-15 reflection):
+    #     existing single-source gates require BOTH [single source]
+    #     AND [no primary link], so a [single source] lead whose raw
+    #     item is a secondary report slips through when the second
+    #     tag is omitted — [938] ChatGPT Wallet led as
+    #     [announced-live] on a single secondary outlet with no
+    #     OpenAI primary, then was used as firm fact in Where this
+    #     points. Flag any [single source] What happened bullet
+    #     whose cited raw items cite no primary source, regardless
+    #     of the [no primary link] tag.
+    if items and what_happened:
+        by_id_12 = {str(it["id"]): it for it in items}
+        safety_critical_12 = re.compile(
+            r"(preparedness.{0,40}critical|critical.{0,40}preparedness"
+            r"|exploitgym|cyber.{0,30}critical)",
+            re.IGNORECASE)
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not re.search(r"\[single source\]", ln, re.IGNORECASE):
+                continue
+            if safety_critical_12.search(ln):
+                continue
+            cited_12 = ID_RE.findall(ln)
+            if cited_12 and not any(
+                    _raw_cites_primary(by_id_12.get(c)) for c in cited_12):
+                problems.append(
+                    "single-source lead gate: [single source] line "
+                    f"in What happened cites no primary source: "
+                    f"{ln.strip()[:120]} — demote to Watch as a "
+                    "priority fetch until a primary artifact or a "
+                    "second independent source is fetched"
+                )
+
     return sorted(set(problems))
 
 
