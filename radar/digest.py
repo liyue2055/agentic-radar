@@ -444,6 +444,16 @@ CLAIM TYPING + FRESHNESS — hard rule:
   cites benchmarks/evals or an independent second source corroborates the
   claim. Otherwise downgrade the wording to "vendor-claimed frontier" —
   never take a vendor's "frontier" framing at face value with no evals.
+- IPO / FILING GATE — hard rule (2026-11-16 reflection): an IPO or
+  securities-filing claim (ticker, share count, price range, pricing
+  or first-trading date) may appear in What happened only when its
+  own item carries a primary filing source — an SEC/EDGAR or
+  exchange filing link, not a secondary report that merely mentions
+  a filing. Otherwise demote it to Missed / watch as "Watch [id] —
+  need primary filing: fetch <SEC/EDGAR filing>", and never use its
+  unverified demand multiples in Why it matters. On 2026-11-16 the
+  Anthropic IPO led second on an aggregator URL with no filing
+  artifact (validator gate 13 enforces this).
 
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this

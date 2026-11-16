@@ -415,6 +415,51 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "second independent source is fetched"
                 )
 
+    # 13. IPO / filing primary gate (2026-11-16 reflection):
+    #     a What happened bullet making an IPO / securities-filing
+    #     claim (ticker, share count, price range, pricing or
+    #     first-trading date) requires a primary filing source in
+    #     its cited raw items — an SEC/EDGAR or exchange filing
+    #     link, not a secondary report that merely mentions a
+    #     filing. On 2026-11-16 [953] Anthropic's IPO led second
+    #     on an aggregator URL with no filing artifact, and its
+    #     [unverified] ~6x demand was repeated in Why it matters.
+    if items and what_happened:
+        by_id_13 = {str(it["id"]): it for it in items}
+        ipo_re = re.compile(
+            r"(\bIPO\b|initial public offering|pricing .{0,30}trading"
+            r"|first trading|price range .{0,40}shares)",
+            re.IGNORECASE)
+        filing_re = re.compile(
+            r"(sec\.gov|edgar|\(primary[^)]*filing"
+            r"|primary[^.\n]{0,40}(sec|edgar) filing)",
+            re.IGNORECASE)
+
+        def _cites_filing(item) -> bool:
+            if not item:
+                return False
+            url = (item.get("url") or "").lower()
+            host = re.sub(r"^https?://", "", url).split("/")[0].split(":")[0]
+            if host == "sec.gov" or host.endswith(".sec.gov"):
+                return True
+            text = f"{item.get('title') or ''} {item.get('summary') or ''}"
+            return bool(filing_re.search(text))
+
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not ipo_re.search(ln):
+                continue
+            cited_13 = ID_RE.findall(ln)
+            if cited_13 and not any(
+                    _cites_filing(by_id_13.get(c)) for c in cited_13):
+                problems.append(
+                    "ipo/filing gate: IPO / filing claim in What "
+                    f"happened cites no primary filing source: "
+                    f"{ln.strip()[:120]} — demote to Watch as a "
+                    "priority fetch until an SEC/EDGAR or exchange "
+                    "filing is fetched"
+                )
+
     return sorted(set(problems))
 
 
