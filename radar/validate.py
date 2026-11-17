@@ -460,6 +460,25 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "filing is fetched"
                 )
 
+    # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
+    #     an item cannot lead in What happened and also be listed
+    #     in the Orphaned section as deserving no further analysis —
+    #     on 2026-11-17 [972] (llama.cpp Inkling 2) did both. Demote
+    #     such an item to Watch / Orphaned only.
+    if what_happened:
+        orphaned = sections.get("Orphaned", "")
+        if orphaned:
+            lead_ids = set(ID_RE.findall(what_happened))
+            for cited in set(ID_RE.findall(orphaned)):
+                if cited in lead_ids:
+                    problems.append(
+                        "lead/orphaned gate: "
+                        f"[{cited}] appears in both What happened "
+                        "and the Orphaned section — a lead declared "
+                        "analysis-free must be demoted to Watch / "
+                        "Orphaned only, never published in both places"
+                    )
+
     return sorted(set(problems))
 
 
