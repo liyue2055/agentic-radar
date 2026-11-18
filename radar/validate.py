@@ -460,6 +460,40 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "filing is fetched"
                 )
 
+    # 15. Single-source vendor benchmark attribution (2026-11-18
+    #     reflection): a [single source] What happened bullet carrying
+    #     a vendor benchmark score (a % or named-benchmark figure) must
+    #     attribute it to the vendor in the bullet itself ("GitHub
+    #     claims", "vendor-reported", ...) or tag it [unverified].
+    #     On 2026-11-18 [995]'s 71.2% Terminal-Bench claim survived
+    #     only on its "GitHub claims" wording; an unattributed score
+    #     would read as independently verified fact.
+    if what_happened:
+        bench_re = re.compile(
+            r"(\d+(?:\.\d+)?\s*%|terminal-bench|swe-bench|benchmark)",
+            re.IGNORECASE)
+        attrib_re = re.compile(
+            r"(claims?|vendor[- ]reported|self[- ]reported"
+            r"|according to (the )?(vendor|github|openai|google"
+            r"|microsoft|anthropic|meta))",
+            re.IGNORECASE)
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not re.search(r"\[single source\]", ln, re.IGNORECASE):
+                continue
+            if not bench_re.search(ln):
+                continue
+            if attrib_re.search(ln) or re.search(
+                    r"\[unverified\]", ln, re.IGNORECASE):
+                continue
+            problems.append(
+                "vendor benchmark gate: [single source] line in "
+                f"What happened carries a benchmark score with no "
+                f"vendor attribution or [unverified] tag: "
+                f"{ln.strip()[:120]} — attribute it to the vendor "
+                "in the bullet or tag it [unverified]"
+            )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —

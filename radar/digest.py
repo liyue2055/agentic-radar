@@ -455,6 +455,13 @@ CLAIM TYPING + FRESHNESS — hard rule:
   Anthropic IPO led second on an aggregator URL with no filing
   artifact (validator gate 13 enforces this).
 
+- VENDOR BENCHMARK GATE — hard rule (2026-11-18 reflection): a
+  [single source] What happened bullet carrying a vendor benchmark
+  score (a % or named-benchmark figure) must attribute it to the
+  vendor in the bullet itself (e.g. "GitHub claims") or tag it
+  [unverified] — an unattributed single-source score reads as
+  independently verified fact (validator gate 15 enforces this).
+
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan
