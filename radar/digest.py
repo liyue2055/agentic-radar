@@ -462,6 +462,13 @@ CLAIM TYPING + FRESHNESS — hard rule:
   [unverified] — an unattributed single-source score reads as
   independently verified fact (validator gate 15 enforces this).
 
+- FRESHNESS TAG GATE — hard rule (2026-11-19 reflection): a What
+  happened bullet whose item is dated more than 3 days before today
+  must carry an [older] tag with its date, even when it is still
+  inside the 7-day freshness window — on 2026-11-19 the Nov 12 and
+  Nov 13 coding-agent releases ran flat alongside Nov 18 news
+  (validator gate 16 enforces this).
+
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan

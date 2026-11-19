@@ -494,6 +494,70 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                 "in the bullet or tag it [unverified]"
             )
 
+    # 16. Freshness tag gate (2026-11-19 reflection): a What happened
+    #     bullet whose cited raw item is dated more than 3 days before
+    #     the digest day must carry an [older] tag — on 2026-11-19
+    #     [1001] (Nov 12) and [1002] (Nov 13) ran flat alongside Nov 18
+    #     news, a week stale with no freshness signal. (Items older
+    #     than 7 days belong out of What happened entirely, per the
+    #     digest prompt's freshness rule; this gate covers the 4–7
+    #     day band that rule lets through untagged.)
+    if items and what_happened:
+        import datetime as _dt
+        by_id_16 = {str(it["id"]): it for it in items}
+        month_num = {m: i + 1 for i, m in enumerate(
+            ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
+        date_re_16 = re.compile(
+            r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+            r"\s+(\d{1,2})\b")
+
+        def _item_date(item):
+            if not item:
+                return None
+            m = date_re_16.search(
+                f"{item.get('title') or ''} {item.get('summary') or ''}")
+            if not m:
+                return None
+            try:
+                day_d = _dt.date.fromisoformat(str(item.get("day") or ""))
+            except ValueError:
+                return None
+            year = day_d.year
+            # A Dec date on an early-Jan digest day belongs to last year.
+            if month_num[m.group(1)] == 12 and day_d.month == 1:
+                year -= 1
+            try:
+                return _dt.date(year, month_num[m.group(1)],
+                                int(m.group(2)))
+            except ValueError:
+                return None
+
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if re.search(r"\[older\]", ln, re.IGNORECASE):
+                continue
+            for cited in ID_RE.findall(ln):
+                item_16 = by_id_16.get(cited)
+                item_day = None
+                try:
+                    item_day = _dt.date.fromisoformat(
+                        str((item_16 or {}).get("day") or ""))
+                except ValueError:
+                    item_day = None
+                released = _item_date(item_16)
+                if (item_day and released
+                        and (item_day - released).days > 3):
+                    problems.append(
+                        "freshness gate: "
+                        f"[{cited}] dated {released.isoformat()} is "
+                        f"more than 3 days before the digest day but "
+                        f"its What happened line carries no [older] "
+                        f"tag: {ln.strip()[:120]} — tag it [older] "
+                        "with its date or move it to Missed / watch"
+                    )
+                    break
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
