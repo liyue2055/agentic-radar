@@ -469,6 +469,13 @@ CLAIM TYPING + FRESHNESS — hard rule:
   Nov 13 coding-agent releases ran flat alongside Nov 18 news
   (validator gate 16 enforces this).
 
+- NO-PRIMARY-LINK GATE — hard rule (2026-11-20 reflection): a story
+  whose best source is still secondary must never run in What
+  happened tagged [no primary link] — demote it to Missed / watch
+  as "Watch [id] — need primary URL" until the primary is fetched.
+  On 2026-11-20 Codex 0.171.0 ran as a lead under its own
+  [no primary link] flag (validator gate 17 enforces this).
+
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan

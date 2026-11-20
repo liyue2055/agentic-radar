@@ -558,6 +558,24 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     )
                     break
 
+    # 17. No-primary-link gate (2026-11-20 reflection): a What
+    #     happened bullet tagged [no primary link] must not run as a
+    #     lead — on 2026-11-20 [1014] (Codex 0.171.0) ran in What
+    #     happened under its own [no primary link] flag, sourced to a
+    #     remio.ai post rather than the OpenAI/GitHub release notes.
+    #     Such a bullet belongs in Missed / watch until a primary
+    #     source is fetched.
+    if what_happened:
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if re.search(r"\[no primary link\]", ln, re.IGNORECASE):
+                problems.append(
+                    "no-primary-link gate: What happened line is "
+                    f"tagged [no primary link]: {ln.strip()[:120]} "
+                    "— demote it to Missed / watch until a primary "
+                    "source is fetched"
+                )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
