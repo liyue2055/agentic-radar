@@ -576,6 +576,36 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "source is fetched"
                 )
 
+    # 18. Untagged no-primary gate (2026-11-21 reflection): gate 17
+    #     only fires on an explicit [no primary link] tag, so a lead
+    #     whose raw items cite no primary source evades it simply by
+    #     omitting the tag — on 2026-11-21 all five What happened
+    #     leads rested on secondary URLs (emergent.sh, gradually.ai,
+    #     Medium, Dataconomy, Engadget) with no tag at all. Check the
+    #     raw items directly: if none of a bullet's cited items cites
+    #     a primary source, fail regardless of tags (safety-critical
+    #     exception mirrors gates 12/17).
+    if items and what_happened:
+        by_id_18 = {str(it["id"]): it for it in items}
+        safety_critical_18 = re.compile(
+            r"(preparedness.{0,40}critical|critical.{0,40}preparedness"
+            r"|exploitgym|cyber.{0,30}critical)",
+            re.IGNORECASE)
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if safety_critical_18.search(ln):
+                continue
+            cited_18 = ID_RE.findall(ln)
+            if cited_18 and not any(
+                    _raw_cites_primary(by_id_18.get(c)) for c in cited_18):
+                problems.append(
+                    "untagged no-primary gate: What happened line "
+                    f"cites no primary source in its raw items: "
+                    f"{ln.strip()[:120]} — tag it [no primary link] "
+                    "and demote it to Missed / watch until a primary "
+                    "source is fetched (gate 18)"
+                )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —

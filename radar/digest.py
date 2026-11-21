@@ -476,6 +476,15 @@ CLAIM TYPING + FRESHNESS — hard rule:
   On 2026-11-20 Codex 0.171.0 ran as a lead under its own
   [no primary link] flag (validator gate 17 enforces this).
 
+- UNTAGGED NO-PRIMARY GATE — hard rule (2026-11-21 reflection):
+  omitting the [no primary link] tag does not cure a secondary-only
+  source. Every What happened bullet's cited items must carry or
+  cite a primary source; if none does, demote the bullet to Missed /
+  watch until the primary is fetched. On 2026-11-21 all five leads
+  rested on secondary URLs (emergent.sh, gradually.ai, Medium,
+  Dataconomy, Engadget) with no tag at all (validator gate 18
+  enforces this).
+
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan
