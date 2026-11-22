@@ -606,6 +606,45 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "source is fetched (gate 18)"
                 )
 
+    # 19. Claimed-official-source gate (2026-11-22 reflection):
+    #     gate 18 accepts a summary phrase like "official docs" as
+    #     citing a primary source, so a bullet can attribute a claim
+    #     to an official docs/changelog/help source while its raw
+    #     URL is a secondary report — on 2026-11-22 the lead [1031]
+    #     claimed Daybreak sessions "in the official docs guide"
+    #     (naming gpt-6-sol / gpt-5.6-cyber) on a news.sulat.com URL.
+    #     When the bullet itself makes that attribution, require a
+    #     cited raw item whose URL host IS a primary host.
+    if items and what_happened:
+        by_id_19 = {str(it["id"]): it for it in items}
+        claimed_official_19 = re.compile(
+            r"official\s+(docs|documentation|changelog|help|guide|"
+            r"release\s+notes)",
+            re.IGNORECASE)
+
+        def _url_is_primary_host(item) -> bool:
+            if not item:
+                return False
+            url = (item.get("url") or "").lower()
+            host = re.sub(r"^https?://", "", url).split("/")[0].split(":")[0]
+            return host in PRIMARY_HOSTS or any(
+                host == h or host.endswith("." + h) for h in PRIMARY_HOSTS)
+
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not claimed_official_19.search(ln):
+                continue
+            cited_19 = ID_RE.findall(ln)
+            if cited_19 and not any(
+                    _url_is_primary_host(by_id_19.get(c)) for c in cited_19):
+                problems.append(
+                    "claimed-official gate: What happened line "
+                    "attributes a claim to an official source but "
+                    f"no cited raw item has a primary-host URL: "
+                    f"{ln.strip()[:120]} — fetch the official URL "
+                    "itself or demote it to Missed / watch (gate 19)"
+                )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
