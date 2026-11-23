@@ -645,6 +645,47 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "itself or demote it to Missed / watch (gate 19)"
                 )
 
+    # 20. Bare claimed-source gate (2026-11-23 reflection):
+    #     gate 19 only fires when the attribution says "official",
+    #     so a bullet can cite a vendor source in bare form while
+    #     its raw URL is a secondary report — on 2026-11-23 [1045]
+    #     ran "per its launch post" on an explainx.ai URL, [1049]
+    #     ran "per the Kimi blog" on a zicq.com URL, and [1043]
+    #     ran "per its release notes via support.claude.com" on an
+    #     aiweekly.co URL. When a bullet attributes a claim with
+    #     "per its/the ... launch post / blog / release notes",
+    #     require a cited raw item whose URL host IS a primary host.
+    if items and what_happened:
+        by_id_20 = {str(it["id"]): it for it in items}
+        claimed_bare_20 = re.compile(
+            r"per\s+(its|the)\s+[^.\n]{0,50}?"
+            r"(launch\s+post|blog|release\s+notes)",
+            re.IGNORECASE)
+
+        def _url_is_primary_host_20(item) -> bool:
+            if not item:
+                return False
+            url = (item.get("url") or "").lower()
+            host = re.sub(r"^https?://", "", url).split("/")[0].split(":")[0]
+            return host in PRIMARY_HOSTS or any(
+                host == h or host.endswith("." + h) for h in PRIMARY_HOSTS)
+
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not claimed_bare_20.search(ln):
+                continue
+            cited_20 = ID_RE.findall(ln)
+            if cited_20 and not any(
+                    _url_is_primary_host_20(by_id_20.get(c)) for c in cited_20):
+                problems.append(
+                    "bare claimed-source gate: What happened line "
+                    "attributes a claim to a launch post / vendor "
+                    "blog / release notes but no cited raw item "
+                    f"has a primary-host URL: {ln.strip()[:120]} "
+                    "— fetch the cited source URL itself or demote "
+                    "it to Missed / watch (gate 20)"
+                )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
