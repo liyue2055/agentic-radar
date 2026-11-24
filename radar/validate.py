@@ -686,6 +686,43 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "it to Missed / watch (gate 20)"
                 )
 
+    # 21. Announced-status primary-host gate (2026-11-24 reflection):
+    #     gates 18-20 accept a raw summary phrase like "official
+    #     changelog" as citing a primary source, so a bullet can run
+    #     as [announced-live] while every cited raw URL is a secondary
+    #     host — on 2026-11-24 all three leads did this: [1055] on
+    #     techcrunch.com, [1056] and [1058] on gradually.ai. For a
+    #     bullet carrying an announcement-status tag, require a cited
+    #     raw item whose URL host IS a primary host; a summary phrase
+    #     no longer suffices.
+    if items and what_happened:
+        by_id_21 = {str(it["id"]): it for it in items}
+        status_tag_21 = re.compile(
+            r"\[(announced-live|announced-coming)\]", re.IGNORECASE)
+
+        def _url_is_primary_host_21(item) -> bool:
+            if not item:
+                return False
+            url = (item.get("url") or "").lower()
+            host = re.sub(r"^https?://", "", url).split("/")[0].split(":")[0]
+            return host in PRIMARY_HOSTS or any(
+                host == h or host.endswith("." + h) for h in PRIMARY_HOSTS)
+
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not status_tag_21.search(ln):
+                continue
+            cited_21 = ID_RE.findall(ln)
+            if cited_21 and not any(
+                    _url_is_primary_host_21(by_id_21.get(c)) for c in cited_21):
+                problems.append(
+                    "announced-status primary-host gate: What happened "
+                    "line is tagged [announced-live]/[announced-coming] "
+                    "but no cited raw item has a primary-host URL: "
+                    f"{ln.strip()[:120]} — fetch the primary URL itself "
+                    "or demote it to Missed / watch (gate 21)"
+                )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
