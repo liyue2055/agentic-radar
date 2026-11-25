@@ -723,6 +723,41 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "or demote it to Missed / watch (gate 21)"
                 )
 
+    # 22. Announced-coming status-match gate (2026-11-25 reflection):
+    #     a bullet tagged [announced-coming] whose cited raw summary
+    #     says the thing is already in beta, launched, generally
+    #     available or rolling out undersells a live status — on
+    #     2026-11-24 [1055] and again on 2026-11-25 [1072] (Install as
+    #     app, "beta on all plans") both ran as [announced-coming].
+    #     Such a bullet must be retagged [announced-live].
+    if items and what_happened:
+        by_id_22 = {str(it["id"]): it for it in items}
+        live_wording_22 = re.compile(
+            r"\b(in beta|beta on|beta for|launched|launching|"
+            r"generally available|now available|rolling out|"
+            r"rolled out|live on|released)\b",
+            re.IGNORECASE)
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if "[announced-coming]" not in ln.lower():
+                continue
+            cited_22 = ID_RE.findall(ln)
+            for c in cited_22:
+                it22 = by_id_22.get(c)
+                if not it22:
+                    continue
+                raw22 = f"{it22.get('title') or ''} {it22.get('summary') or ''}"
+                if live_wording_22.search(raw22):
+                    problems.append(
+                        "announced-coming status-match gate: What "
+                        f"happened line cites [{c}] whose raw summary "
+                        "describes a beta / launched / available status "
+                        f"but the bullet is tagged [announced-coming]: "
+                        f"{ln.strip()[:120]} — retag it "
+                        "[announced-live] (gate 22)"
+                    )
+                    break
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
