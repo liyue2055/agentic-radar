@@ -758,6 +758,43 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     )
                     break
 
+    # 23. Safety-exemption pricing gate (2026-11-26 reflection):
+    #     gates 12/18 exempt a safety-critical bullet (Preparedness
+    #     Critical, exploit-class) from the no-primary demotion, but
+    #     that exemption covers only the safety classification itself.
+    #     On 2026-11-26 [1095] (GPT-6.2, Nov 17) headlined on an
+    #     explainx.ai secondary blog, and its 20% price cut and cache
+    #     discount rode the same exemption with no OpenAI primary.
+    #     A safety-exempt bullet whose cited items cite no primary
+    #     source must not also carry a pricing claim.
+    if items and what_happened:
+        by_id_23 = {str(it["id"]): it for it in items}
+        safety_critical_23 = re.compile(
+            r"(preparedness.{0,40}critical|critical.{0,40}preparedness"
+            r"|exploitgym|cyber.{0,30}critical)",
+            re.IGNORECASE)
+        price_claim_23 = re.compile(
+            r"(\$\d|price cut|priced\b|pricing|discount)",
+            re.IGNORECASE)
+        for ln in [b for b in what_happened.splitlines()
+                   if b.lstrip().startswith("- ")]:
+            if not safety_critical_23.search(ln):
+                continue
+            if not price_claim_23.search(ln):
+                continue
+            cited_23 = ID_RE.findall(ln)
+            if cited_23 and not any(
+                    _raw_cites_primary(by_id_23.get(c)) for c in cited_23):
+                problems.append(
+                    "safety-exemption pricing gate: What happened "
+                    "line relies on the safety-critical exemption "
+                    "but also carries a pricing claim with no "
+                    f"primary source in its cited items: "
+                    f"{ln.strip()[:120]} — strip the pricing claim "
+                    "or demote it to Missed / watch until the vendor "
+                    "primary is fetched (gate 23)"
+                )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
