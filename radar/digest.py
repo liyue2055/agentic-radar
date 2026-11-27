@@ -485,6 +485,15 @@ CLAIM TYPING + FRESHNESS — hard rule:
   Dataconomy, Engadget) with no tag at all (validator gate 18
   enforces this).
 
+- VERIFIED-PERCENTAGE GATE — hard rule (2026-11-27 reflection): in
+  Why it matters / Where this points, never call a percentage figure
+  "verified" unless a cited item records independent verification.
+  Numbers from a vendor's own post are "vendor-reported", not
+  "verified" — parity or behaviour verification by the vendor is not
+  independent measurement of its savings. On 2026-11-27 the digest
+  called Anthropic's Rust-migration saving "a verified 70% CPU cut"
+  on Anthropic's own post alone (validator gate 24 enforces this).
+
 RECALL LOCK — hard rule:
 - Every item id cited in any section (Why it matters, Connections, Where this
   points, Missed / watch) must also appear in What happened. No orphan

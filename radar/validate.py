@@ -795,6 +795,46 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "primary is fetched (gate 23)"
                 )
 
+    # 24. Verified-percentage gate (2026-11-27 reflection):
+    #     in Why it matters / Where this points, calling a percentage
+    #     figure "verified" requires a cited item that records
+    #     independent verification. On 2026-11-27 the digest called
+    #     Anthropic's Rust-migration saving "a verified 70% CPU cut"
+    #     [1108]: Anthropic verified behavioural parity against
+    #     production traffic, but the 70% CPU / 20% TTFT savings are
+    #     Anthropic's own numbers from its own post — parity
+    #     verification is not independent measurement of the saving.
+    #     Vendor-post numbers must be worded "vendor-reported".
+    if items:
+        by_id_24 = {str(it["id"]): it for it in items}
+        verified_pct_24 = re.compile(
+            r"verified[^.\n]{0,60}?\d+(?:\.\d+)?\s*%"
+            r"|\d+(?:\.\d+)?\s*%[^.\n]{0,60}?verified",
+            re.IGNORECASE)
+        independent_24 = re.compile(
+            r"independent(ly)?\s+(verif|benchmark|measur|test|audit)",
+            re.IGNORECASE)
+        for sec_name_24 in ("Why it matters", "Where this points"):
+            body_24 = sections.get(sec_name_24, "")
+            for ln in [b for b in body_24.splitlines()
+                       if b.lstrip().startswith("- ")]:
+                if not verified_pct_24.search(ln):
+                    continue
+                cited_24 = ID_RE.findall(ln)
+                if cited_24 and any(
+                        independent_24.search(
+                            f"{(by_id_24.get(c) or {}).get('title') or ''} "
+                            f"{(by_id_24.get(c) or {}).get('summary') or ''}")
+                        for c in cited_24):
+                    continue
+                problems.append(
+                    "verified-percentage gate: bullet calls a "
+                    "percentage figure 'verified' but no cited item "
+                    "records independent verification: "
+                    f"{ln.strip()[:120]} — reword vendor-post numbers "
+                    "as 'vendor-reported', not 'verified' (gate 24)"
+                )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
