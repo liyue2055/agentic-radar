@@ -835,6 +835,42 @@ def check_digest(markdown: str, expected_ids=None, items=None) -> list[str]:
                     "as 'vendor-reported', not 'verified' (gate 24)"
                 )
 
+    # 25. Zero-primary lead slate gate (2026-11-28 reflection):
+    #     gates 18/21 flag individual no-primary leads, but on
+    #     2026-11-28 all three leads rested on secondary URLs
+    #     (cybersecuritynews.com, ashutoshai.com, explainx.ai) and
+    #     the digest still shipped via the hand-written fallback.
+    #     A What happened slate in which NO bullet cites a raw item
+    #     whose URL host is a primary host is a watch-only day:
+    #     fail it outright so the leads are demoted to Missed /
+    #     watch instead of headlining secondary reports. Unlike
+    #     gate 18, a summary phrase citing a primary source does
+    #     not satisfy this gate — the URL host itself must be
+    #     primary (the gate 21 standard, applied slate-wide).
+    if items and what_happened:
+        by_id_25 = {str(it["id"]): it for it in items}
+
+        def _url_is_primary_host_25(item) -> bool:
+            if not item:
+                return False
+            url = (item.get("url") or "").lower()
+            host = re.sub(r"^https?://", "", url).split("/")[0].split(":")[0]
+            return host in PRIMARY_HOSTS or any(
+                host == h or host.endswith("." + h) for h in PRIMARY_HOSTS)
+
+        lead_lines_25 = [b for b in what_happened.splitlines()
+                         if b.lstrip().startswith("- ")]
+        if lead_lines_25 and not any(
+                _url_is_primary_host_25(by_id_25.get(c))
+                for ln in lead_lines_25 for c in ID_RE.findall(ln)):
+            problems.append(
+                "zero-primary lead slate gate: no What happened "
+                "bullet cites a raw item with a primary-host URL — "
+                "demote the leads to Missed / watch and publish a "
+                "watch-only day until a primary source is fetched "
+                "(gate 25)"
+            )
+
     # 14. Lead / Orphaned contradiction (2026-11-17 reflection):
     #     an item cannot lead in What happened and also be listed
     #     in the Orphaned section as deserving no further analysis —
